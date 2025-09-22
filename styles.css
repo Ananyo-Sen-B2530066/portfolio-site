@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   color: #333;
 }
@@ -209,3 +209,4 @@ footer {
 html {
   scroll-behavior: smooth;
 }
+
