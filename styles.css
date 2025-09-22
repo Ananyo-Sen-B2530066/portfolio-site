@@ -1,4 +1,4 @@
-/* Reset some default styling */
+/* Reset default styling */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   color: #333;
 }
@@ -97,25 +97,37 @@ nav ul li ul.dropdown li a:hover {
 main {
   flex: 1;
   padding: 2rem;
+  width: 100%;
 }
 
-/* Projects section */
+/* Projects Section */
 section.projects {
-  margin-top: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 section.projects h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-size: 2rem;
   color: #1a1a2e;
 }
 
+.projects-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
 .project {
+  flex: 1 1 300px;       /* flexible width with minimum 300px */
+  max-width: 350px;
   background-color: #fff;
-  border-radius: 10px;
   padding: 1rem;
-  margin: 1rem 0;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -139,12 +151,19 @@ section.projects h2 {
   background-color: #005bb5;
 }
 
-/* Contact section */
+/* Contact Section */
 section.contact {
-  margin-top: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
   background-color: #e0e7ff;
   padding: 2rem;
   border-radius: 10px;
+}
+
+section.contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
 }
 
 .contact form {
@@ -177,9 +196,11 @@ section.contact {
 
 /* Email & Call buttons below form */
 .contact .contact-options {
-  margin-top: 1rem;
   display: flex;
+  flex-direction: row;
   gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
 }
 
 .contact .contact-options a {
@@ -210,3 +231,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .projects-container {
+    flex-direction: column;  /* stack projects vertically on mobile */
+    align-items: center;
+  }
+
+  .contact .contact-options {
+    flex-direction: column;  /* stack email/call buttons vertically on mobile */
+    gap: 0.5rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
