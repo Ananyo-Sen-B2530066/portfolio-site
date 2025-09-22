@@ -131,7 +131,7 @@ header {
 
 /* Projects Section */
 .projects-section {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -148,12 +148,12 @@ header {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .project {
-  flex: 1 1 300px;
-  max-width: 350px;
+  flex: 1 1 350px;
+  max-width: 400px;
   background-color: #fff;
   padding: 1rem;
   border-radius: 10px;
@@ -295,3 +295,4 @@ html {
     position: static; /* easier mobile dropdown */
   }
 }
+
