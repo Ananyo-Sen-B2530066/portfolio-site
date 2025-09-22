@@ -1,4 +1,4 @@
-/* Reset default styling */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,16 +6,16 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body styling */
+/* Body */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* attractive gradient */
   color: #333;
 }
 
-/* Header */
+/* Header & Navigation */
 header {
   display: flex;
   justify-content: space-between;
@@ -23,10 +23,12 @@ header {
   padding: 1rem 2rem;
   background-color: #1a1a2e;
   color: #fff;
+  z-index: 100;
+  position: relative;
 }
 
 header .brand {
-  text-align: left;
+  text-align: left; /* Changed from center to left */
 }
 
 header .brand h1 {
@@ -38,7 +40,6 @@ header .brand p {
   color: #c3cfe2;
 }
 
-/* Navigation menu */
 nav {
   position: relative;
 }
@@ -58,6 +59,7 @@ nav ul li a {
   color: #fff;
   padding: 0.5rem 1rem;
   transition: background 0.3s;
+  display: block;
 }
 
 nav ul li a:hover {
@@ -76,7 +78,7 @@ nav ul li ul.dropdown {
   padding: 0.5rem 0;
   border-radius: 5px;
   min-width: 150px;
-  z-index: 10;
+  z-index: 200;
 }
 
 nav ul li:hover ul.dropdown {
@@ -93,21 +95,22 @@ nav ul li ul.dropdown li a:hover {
   background-color: #0073e6;
 }
 
-/* Main content */
+/* Main container */
 main {
   flex: 1;
   padding: 2rem;
   width: 100%;
 }
 
-/* Projects Section */
-section.projects {
+/* -------------------- Projects Section -------------------- */
+/* Changed class to .projects-section to prevent conflicts with other section styling */
+.projects-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-section.projects h2 {
+.projects-section h2 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
@@ -116,14 +119,14 @@ section.projects h2 {
 
 .projects-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: row;   /* horizontal layout */
+  flex-wrap: wrap;       /* wrap on smaller screens */
   gap: 1.5rem;
   justify-content: center;
 }
 
 .project {
-  flex: 1 1 300px;       /* flexible width with minimum 300px */
+  flex: 1 1 300px;       /* min width 300px */
   max-width: 350px;
   background-color: #fff;
   padding: 1rem;
@@ -151,8 +154,9 @@ section.projects h2 {
   background-color: #005bb5;
 }
 
-/* Contact Section */
-section.contact {
+/* -------------------- Contact Section -------------------- */
+/* Changed class to .contact-section to prevent conflicts */
+.contact-section {
   max-width: 800px;
   margin: 2rem auto;
   background-color: #e0e7ff;
@@ -160,26 +164,27 @@ section.contact {
   border-radius: 10px;
 }
 
-section.contact h2 {
+.contact-section h2 {
   text-align: center;
   margin-bottom: 1rem;
   color: #1a1a2e;
 }
 
-.contact form {
+.contact-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.contact input, .contact textarea {
+.contact-form input,
+.contact-form textarea {
   padding: 0.75rem;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 1rem;
 }
 
-.contact button {
+.contact-form button {
   padding: 0.75rem;
   border: none;
   background-color: #1a1a2e;
@@ -190,12 +195,12 @@ section.contact h2 {
   transition: background 0.3s;
 }
 
-.contact button:hover {
+.contact-form button:hover {
   background-color: #0073e6;
 }
 
 /* Email & Call buttons below form */
-.contact .contact-options {
+.contact-options {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -203,7 +208,7 @@ section.contact h2 {
   justify-content: center;
 }
 
-.contact .contact-options a {
+.contact-options a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -212,7 +217,7 @@ section.contact h2 {
   transition: background 0.3s;
 }
 
-.contact .contact-options a:hover {
+.contact-options a:hover {
   background-color: #0073e6;
 }
 
@@ -226,20 +231,20 @@ footer {
   margin-top: auto;
 }
 
-/* Smooth scroll for anchor links */
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Responsive Adjustments */
+/* -------------------- Responsive -------------------- */
 @media (max-width: 768px) {
   .projects-container {
-    flex-direction: column;  /* stack projects vertically on mobile */
+    flex-direction: column;
     align-items: center;
   }
 
-  .contact .contact-options {
-    flex-direction: column;  /* stack email/call buttons vertically on mobile */
+  .contact-options {
+    flex-direction: column;
     gap: 0.5rem;
   }
 
