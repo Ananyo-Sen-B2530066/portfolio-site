@@ -1,121 +1,654 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ananyo Sen - Portfolio</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+        * -------------------- CORE STYLING & ANIMATIONS --------------------
+        */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f7fa; /* Simpler background base */
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        
+        /* 1. Header Styling (REDUCED SIZE) */
+        .header-content h1 {
+            font-size: 1.75rem;
+            line-height: 1.2;
+        }
+        .header-content p {
+            font-size: 1rem;
+        }
+        .header-nav {
+            gap: 1rem;
+        }
+        
+        /* 1.5. Header Transformation on Scroll */
+        #main-header {
+            transition: height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header-small {
+            height: 4rem; /* Reduced height */
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 2. Hero Section Gradient & Continuous Star Field Animation */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e, #0f1629); /* Darker, more dramatic base */
+            z-index: 1; 
+        }
+
+        /* Star Field Container */
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 10s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* 3. Interactivity & Transitions */
+        .interactive-element {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Waving Hand Animation */
+        @keyframes wave {
+            0% { transform: rotate( 0.0deg) }
+            10% { transform: rotate(14.0deg) }
+            20% { transform: rotate(-8.0deg) }
+            30% { transform: rotate(14.0deg) }
+            40% { transform: rotate(-4.0deg) }
+            50% { transform: rotate(10.0deg) }
+            60% { transform: rotate( 0.0deg) }
+            100% { transform: rotate( 0.0deg) }
+        }
+        .animate-waving-hand {
+            animation: wave 2.5s infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+
+        /* Project Card Liveliness (Lift & Tilt on Hover) */
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.03) rotateZ(0.5deg); /* More pronounced lift and tilt */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 4. Scroll Reveal States (Enhanced: Lift, Scale, Rotate) */
+        .project-card {
+            opacity: 0; /* Start hidden */
+            transform: translateY(40px) scale(0.95) rotateX(10deg);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+        }
+
+        /* 5. Global Pulse Shadow (Subtler) */
+        @keyframes shadow-pulse {
+            0% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(102, 126, 234, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.2); }
+        }
+        #main-content-wrapper {
+            animation: shadow-pulse 6s ease-in-out infinite;
+        }
+
+        /* 6. Cursor Trail Dot */
+        #cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #0073e6;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            /* Short, fast transition for a noticeable trail effect */
+            transition: transform 0.05s linear, background-color 0.1s ease-out; 
+            box-shadow: 0 0 5px #0073e6, 0 0 10px #667eea;
+        }
+
+        /* Tech Stack Tag Pulse */
+        @keyframes tag-pulse {
+            0%, 100% { transform: scale(1); background-color: #e5e7eb; }
+            50% { transform: scale(1.05); background-color: #c3cfe2; }
+        }
+        .tag:hover {
+            animation: tag-pulse 0.5s ease;
+        }
+
+        /* Active Nav Link Indicator */
+        .active-nav {
+            position: relative;
+        }
+        .active-nav a { 
+             position: relative;
+             z-index: 2;
+        }
+        .active-nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 3px;
+            width: 80%;
+            background-color: #0073e6;
+            border-radius: 1px;
+            animation: expand-line 0.3s ease-out forwards;
+        }
+        @keyframes expand-line {
+            from { width: 0; }
+            to { width: 80%; }
+        }
+
+        /* Dropdown Animation */
+        .dropdown-content {
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            opacity: 0;
+            transform: translateY(-10px);
+            display: none; 
+        }
+        .dropdown:hover .dropdown-content {
+            display: block; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Call Me Icon Jiggle */
+        @keyframes jiggle {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70% { transform: rotate(8deg); }
+            20%, 40%, 60% { transform: rotate(-8deg); }
+            80% { transform: rotate(4deg); }
+            90% { transform: rotate(-4deg); }
+        }
+        .animate-jiggle {
+            display: inline-block;
+            animation: jiggle 4s ease-in-out infinite 2s; /* Start after a delay */
+        }
+        
+        /* Contact Form Interactivity */
+        input:focus, textarea:focus {
+            box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.3) !important;
+            border-color: #0073e6 !important;
+            outline: none;
+        }
+        .contact-submit-btn:active {
+            transform: scale(0.98);
+            background-color: #005bb5;
+            transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+        }
+
+        /* Responsive adjustments for navigation on mobile */
+        @media (max-width: 768px) {
+             .header-content {
+                align-items: flex-start;
+            }
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            .header-nav > * {
+                width: 100%;
+            }
+            .dropdown-content {
+                position: static !important;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
-      <h1>Ananyo Sen</h1>
-      <p>• Freelance Developer •</p>
+<body class="text-gray-800">
 
-      <!-- Navigation -->
-      <nav class="top-nav">
-        <div class="dropdown">
-          <a href="#projects" class="dropbtn">Projects ▾</a>
-          <div class="dropdown-content">
-            <a href="#project1">Project One</a>
-          </div>
+    <!-- Header / Sticky Navigation (Original Dark Color: #1a1a2e) -->
+    <header id="main-header" class="sticky top-0 z-50 bg-[#1a1a2e] text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center h-auto sm:h-16 py-3 sm:py-2">
+            
+            <!-- 3D Transform on Name (Mouse Interaction) -->
+            <div class="header-content mb-3 sm:mb-0 transform-style-preserve-3d" id="header-name-wrapper">
+                <h1 class="text-white font-extrabold" id="header-name">Ananyo Sen</h1>
+                <p class="text-[#c3cfe2] mt-0">• Freelance Developer •</p>
+            </div>
+
+            <!-- Navigation Links (Active Link Tracking) -->
+            <nav class="header-nav flex flex-wrap sm:flex-nowrap sm:flex-row">
+                
+                <!-- Dropdown for Projects (Animated) -->
+                <div class="relative dropdown" id="nav-projects">
+                    <a href="#projects" class="dropbtn block text-center text-white text-base hover:bg-[#0073e6] px-4 py-2 rounded-md interactive-element">Projects ▾</a>
+                    <!-- Dynamic Dropdown Links -->
+                    <div id="project-dropdown" class="dropdown-content absolute left-0 w-full sm:w-48 bg-[#1a1a2e] rounded-lg shadow-xl py-1 hidden">
+                        <!-- Links generated by JS -->
+                    </div>
+                </div>
+
+                <div id="nav-contact">
+                    <a href="#contact" class="block text-center text-white text-base hover:bg-[#0073e6] px-4 py-2 rounded-md interactive-element">Contact</a>
+                </div>
+                
+                <!-- CV Links -->
+                <a href="cv.pdf" target="_blank" class="block text-center text-white text-base bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-md font-medium interactive-element">📄 View CV</a>
+                <a href="cv.pdf" download class="block text-center text-white text-base bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-md font-medium interactive-element">⬇️ Download CV</a>
+            </nav>
         </div>
-        <a href="#contact">Contact</a>
-        <a href="cv.pdf" target="_blank">📄 View CV</a>
-        <a href="cv.pdf" download>⬇️ Download CV</a>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- Hero -->
-  <section class="hero-section">
-    <h2>Welcome 👋</h2>
-    <p>I’m <strong>Ananyo Sen</strong> — a passionate freelancer driven by creativity, curiosity, and a love for meaningful work. Whether I’m building, designing, writing, or solving problems, my goal is simple: to create value that truly matters...</p>
-    <a href="#contact" class="cta-btn">Let’s Talk</a>
-  </section>
+    <!-- Global Cursor Dot -->
+    <div id="cursor-dot"></div>
 
-  <!-- Projects -->
-  <section id="projects" class="projects-section">
-    <h2>My Projects</h2>
+    <!-- Main Content Wrapper with Global Pulse Shadow -->
+    <div id="main-content-wrapper" class="flex-grow">
+    
+        <!-- Hero Section (Animated Gradient, Typing Effect, Star Field) -->
+        <section class="hero-section flex flex-col justify-center items-start px-8 sm:px-16 min-h-[60vh] text-white" id="hero">
+            <!-- Continuous Motion Background Element -->
+            <div class="stars-container" id="stars-container"></div>
+            
+            <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 z-10">
+                <span id="hero-title-text" class="border-r-2 border-white pr-1"></span>
+                <span class="animate-waving-hand text-5xl sm:text-6xl inline-block">👋</span>
+            </h2>
+            <p id="hero-subtitle" class="text-xl sm:text-2xl mb-8 leading-relaxed max-w-3xl opacity-0 transition duration-700 ease-out z-10">
+                I’m <strong class="font-extrabold">Ananyo Sen</strong> — a passionate freelancer driven by creativity, curiosity, and a love for meaningful work. Whether I’m building, designing, writing, or solving problems, my goal is simple: to create value that truly matters...
+            </p>
+            <!-- CTA button using original colors -->
+            <a href="#contact" class="cta-btn text-lg font-bold py-3 px-6 rounded-lg bg-white text-[#764ba2] hover:bg-[#e0d4f7] interactive-element z-10">
+                Let’s Talk
+            </a>
+        </section>
 
-  <div class="projects-container">
-    <div class="project" id="project1">
-      <h3>Project One</h3>
-      <p>My UG Dissertation for graduating with a B.Sc. Honours.</p>
-      <a href="projects/project1.pdf" download>⬇️ Download Project</a>
-      <!-- Optional: view PDF in new tab -->
-      <a href="projects/project1.pdf" target="_blank">📄 View Project</a>
-      <!-- Optional: Live demo link -->
-      <!-- <a href="https://project1-demo.com" target="_blank">🔗 Live Demo</a> -->
-    </div>
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section max-w-7xl mx-auto py-16">
+            <h2 class="text-4xl font-bold text-center mb-16 text-[#1a1a2e]">My Projects</h2>
 
-   <!-- <div class="project" id="project2">
-      <h3>Project Two</h3>
-      <p>Description for the second project.</p>
-      <a href="projects/project2.zip" download>⬇️ Download Project</a>
-    </div>
+            <!-- Project Display Area -->
+            <div id="projects-container" class="projects-container px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                <p id="loading-message" class="col-span-full text-center text-lg text-gray-500">Loading projects...</p>
+                <!-- Projects will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
 
-    <div class="project" id="project3">
-      <h3>Project Three</h3>
-      <p>Description for the third project.</p>
-      <a href="projects/project3.zip" download>⬇️ Download Project</a> -->
-    </div>
-  </section>
+        <!-- Contact Section (Animated Call Icon, Input Glow, Button Press) -->
+        <section id="contact" class="contact-section bg-[#e0e7ff] py-16 max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-[#1a1a2e]">Contact Me</h2>
+            
+            <div class="max-w-2xl mx-auto p-8 rounded-xl shadow-2xl bg-white border-t-8 border-[#1a1a2e]">
+                <p class="text-center text-lg text-gray-600 mb-8">
+                    Ready to collaborate? Let's discuss your next project!
+                </p>
 
-  <!-- Contact -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Me</h2>
+                <!-- Contact Form (Using Formspree as mock backend) -->
+                <form action="https://formspree.io/f/mldprpbb" method="POST" class="space-y-6">
+                    <label class="block">
+                        <span class="text-gray-700 font-medium">Your Email:</span>
+                        <input type="email" name="email" required placeholder="name@example.com"
+                            class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:border-[#0073e6] focus:ring-[#0073e6]">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-700 font-medium">Your Message:</span>
+                        <textarea name="message" required rows="5" placeholder="Tell me about your project..."
+                                class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:border-[#0073e6] focus:ring-[#0073e6]"></textarea>
+                    </label>
+                    <!-- Added class for button press animation -->
+                    <button type="submit" class="contact-submit-btn w-full bg-[#1a1a2e] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#0073e6] interactive-element">
+                        Send Message
+                    </button>
+                </form>
 
-    <form action="https://formspree.io/f/mldprpbb" method="POST">
-      <label>Your Email:<br>
-        <input type="email" name="email" required>
-      </label><br>
-      <label>Your Message:<br>
-        <textarea name="message" required></textarea>
-      </label><br>
-      <button type="submit">Send Message</button>
-    </form>
+                <div class="mt-8 pt-6 border-t border-gray-300 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:arka8868@gmail.com" class="contact-btn email-btn flex items-center justify-center text-white bg-[#1a1a2e] hover:bg-[#0073e6] py-3 px-4 rounded-lg font-medium interactive-element">
+                        <span class="mr-2">📧</span> Email Me
+                    </a>
+                    <a href="tel:+917029281649" class="contact-btn call-btn flex items-center justify-center text-white bg-[#1a1a2e] hover:bg-[#0073e6] py-3 px-4 rounded-lg font-medium interactive-element">
+                        <!-- Added animate-jiggle class for subtle motion -->
+                        <span class="mr-2 animate-jiggle">📞</span> Call Me
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div class="contact-options">
-      <a href="mailto:arka8868@gmail.com" class="contact-btn email-btn">📧 Email Me</a>
-      <a href="tel:+917029281649" class="contact-btn call-btn">📞 Call Me</a>
-    </div>
-  </section>
+    </div><!-- End of main-content-wrapper -->
 
-  <!-- Footer -->
-  <footer>
-    <p>© <span id="year"></span> Ananyo Sen. All Rights Reserved.</p>
-  </footer>
+    <!-- Footer (Original Dark Color: #1a1a2e) -->
+    <footer class="bg-[#1a1a2e] text-white py-6 mt-auto border-t-2 border-[#0073e6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; <span id="year"></span> Ananyo Sen. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- JavaScript for Dynamic Interactions and Data Loading -->
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
 
-  <!-- Live chat widget (Tawk.to example) -->
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/68d15af145d7bd19193aac91/1j5osmgoo';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-</script>
-<!--End of Tawk.to Script-->
+        // --- HARDCODED PROJECT DATA (Simulating Backend Load) ---
+        const projectsData = [
+            {
+                id: 'ug-dissertation',
+                name: 'UG Dissertation Research',
+                description: 'My undergraduate dissertation, focusing on Bessel Function and its some applications in solving ODE problems.',
+                tags: 'ODE, Bessel Function, Mathematics',
+                viewUrl: 'projects/ug_dissertation.pdf',
+                downloadUrl: 'projects/ug_dissertation.pdf',
+                viewLink: '#',
+                borderClass: '#0073e6',
+                timestamp: 1678886400000 // April 26, 2025
+            },
+            {
+                id: 'video-game-sale-analysis',
+                name: 'Video Game Sales Analysis',
+                description: 'A report on the sales of different video games, analysing them through regression models built with Python.',
+                tags: 'Python, Boosting, Trees, MatPlotLib',
+                viewUrl: '#',
+                downloadUrl: null,
+                viewLink: '#',
+                borderClass: '#4a5568', // Gray-600 equivalent
+                timestamp: 1686979200000 // November 19, 2025
+            },
+            {
+                id: 'custom-environment-building',
+                name: 'Treasure Hunt Environment',
+                description: 'Developed a custom environment on Treasure Hunt using Gymnasium and trained the agent using RL to solve the maze.',
+                tags: 'Gymnasium, TensorFlow, Pandas, Torch',
+                viewUrl: '#',
+                downloadUrl: null,
+                viewLink: '#',
+                borderClass: '#48bb78', // Green-600 equivalent
+                timestamp: 1699056000000 // December 17, 2025
+            },
+            {
+                id: 'auction-ui',
+                name: 'Cricket Auction UI',
+                description: 'Built an UI for arranging a cricket Auction for a college fest event, allowing the user with ease of work, while providing convincing and real visual datas to the team managers.',
+                tags: 'React App, JavaScript, UI',
+                viewUrl: '#',
+                downloadUrl: null,
+                viewLink: 'https://auction-perceptron-window.vercel.app/',
+                borderClass: '#9f7aea', // Purple-500 equivalent
+                timestamp: 1708899200000 // January 11, 2025
+            },
+            {
+                id: 'custom-quiz-ui',
+                name: 'Custom Quiz UI',
+                description: 'UI for preparing a custom quiz which allows other user to take on and check their performances, compare results, and also ensures non-ethical methods are not entertained.',
+                tags: 'HTML, JavaScript, UI',
+                viewUrl: '#',
+                downloadUrl: null,
+                viewLink: 'https://quiz-platform-2gr0.onrender.com/',
+                borderClass: '#FFD700', // Purple-500 equivalent
+                timestamp: 1715676200000 // December 25, 2024
+            }
+        ];
 
-   <!-- Year Script -->
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+
+        // --- UI ELEMENTS ---
+        const projectsContainer = document.getElementById('projects-container');
+        const loadingMessage = document.getElementById('loading-message');
+        
+        // --- SCROLL OBSERVER SETUP ---
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // --- UTILITY FUNCTIONS ---
+
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.id = `project-${project.id}`;
+            
+            // Generate tags HTML
+            const tagsHtml = project.tags.split(',').map(tag => {
+                const trimmedTag = tag.trim();
+                return `<span class="tag text-sm bg-gray-200 text-gray-700 py-2 px-4 rounded-full font-medium interactive-element">${trimmedTag}</span>`;
+            }).join('');
+
+            // Set dynamic border color
+            const borderStyle = project.borderClass.startsWith('#') ? `border-top: 4px solid ${project.borderClass};` : `border-t-4 border-${project.borderClass.replace('#', '')}`;
+
+            // Start project card hidden for scroll reveal
+            card.className = `project-card bg-white rounded-xl p-8 shadow-xl interactive-element`;
+            card.style.cssText = borderStyle;
+
+            card.innerHTML = `
+                <h3 class="text-2xl font-semibold mb-3" style="color: ${project.borderClass};">${project.name}</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">${project.description}</p>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    ${tagsHtml}
+                </div>
+                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t border-gray-100">
+                    ${project.viewUrl && project.viewUrl !== '#' ? `<a href="${project.viewUrl}" target="_blank" class="text-sm border border-[#0073e6] text-[#0073e6] py-2 px-4 rounded-lg font-medium hover:bg-blue-50 interactive-element">
+                        📄 View Project
+                    </a>` : ''}
+                    ${project.downloadUrl ? `<a href="${project.downloadUrl}" download class="text-sm bg-[#0073e6] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#005bb5] interactive-element">
+                        ⬇️ Download
+                    </a>` : ''}
+                    ${project.viewLink && project.viewLink !== '#' ? `<a href="${project.viewLink}" target="_blank" class="text-sm border border-[#0073e6] text-[#0073e6] py-2 px-4 rounded-lg font-medium hover:bg-blue-50 interactive-element">
+                        🔗 View URL
+                    </a>` : ''}
+                    ${(project.viewUrl === '#' || !project.viewUrl) && !project.downloadUrl && project.viewLink === '#' ? `<span class="text-sm text-gray-500 py-2 px-4">Link will be available soon.</span>` : ''}
+                </div>
+            `;
+            
+            observer.observe(card);
+            return card;
+        }
+
+        // Function to render the entire project list
+        function renderProjects(projects) {
+            projectsContainer.innerHTML = '';
+            document.getElementById('project-dropdown').innerHTML = ''; // Clear dropdown
+
+            if (projects.length === 0) {
+                projectsContainer.innerHTML = `<p class="col-span-full text-center text-lg text-gray-500">No projects defined in the data source.</p>`;
+                document.getElementById('project-dropdown').innerHTML = `<a href="#projects" class="block px-4 py-2 text-sm text-white hover:bg-[#0073e6]">No Projects</a>`;
+                return;
+            }
+
+            projects.forEach((project) => {
+                // Main project display
+                projectsContainer.appendChild(createProjectCard(project));
+
+                // Navigation dropdown link
+                const dropdownLink = document.createElement('a');
+                dropdownLink.href = `#project-${project.id}`;
+                dropdownLink.className = 'block px-4 py-2 text-sm text-white hover:bg-[#0073e6] transition';
+                dropdownLink.textContent = project.name.substring(0, 30); // Truncate long names for dropdown
+                document.getElementById('project-dropdown').appendChild(dropdownLink);
+            });
+            loadingMessage.classList.add('hidden');
+        }
+
+        // --- ANIMATION / INTERACTION LOGIC ---
+
+        // 1. Typing Effect
+        const titleTextElement = document.getElementById('hero-title-text');
+        const subtitleElement = document.getElementById('hero-subtitle');
+        const textToType = 'Welcome';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textToType.length) {
+                titleTextElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 100);
+            } else {
+                titleTextElement.classList.remove('border-r-2', 'border-white', 'pr-1');
+                setTimeout(() => {
+                    subtitleElement.classList.remove('opacity-0');
+                    subtitleElement.classList.add('opacity-100');
+                }, 500);
+            }
+        }
+        
+        // 2. 3D Transform on Name (Mouse Interaction)
+        const nameWrapper = document.getElementById('header-name-wrapper');
+        const headerName = document.getElementById('header-name');
+
+        nameWrapper.addEventListener('mousemove', (e) => {
+            const rect = nameWrapper.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const offsetX = (e.clientX - centerX) / (rect.width / 2);
+            const offsetY = (e.clientY - centerY) / (rect.height / 2);
+            
+            const rotateY = offsetX * 5;
+            const rotateX = -offsetY * 5;
+            
+            headerName.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            headerName.style.transition = 'none';
+        });
+
+        nameWrapper.addEventListener('mouseleave', () => {
+            headerName.style.transition = 'transform 0.5s ease-out';
+            headerName.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+        });
+
+
+        // 3. Scroll Listener for Header Shrink and Active Link
+        const header = document.getElementById('main-header');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = {
+            'projects': document.getElementById('nav-projects'),
+            'contact': document.getElementById('nav-contact')
+        };
+
+        function updateScrollInteractions() {
+            const scrollY = window.scrollY;
+
+            // Header Shrink Logic
+            if (scrollY > 50) {
+                header.classList.add('header-small');
+            } else {
+                header.classList.remove('header-small');
+            }
+
+            // Active Link Highlighting
+            let currentSection = null;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - header.offsetHeight - 50; 
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.id;
+                }
+            });
+
+            // Update classes on navigation links
+            Object.keys(navLinks).forEach(key => {
+                const navElement = navLinks[key];
+                
+                if (navElement) {
+                     navElement.classList.remove('active-nav');
+                }
+
+                if (key === currentSection) {
+                    navElement.classList.add('active-nav');
+                }
+            });
+        }
+
+        // 4. Cursor Trail (Dot following mouse)
+        const cursorDot = document.getElementById('cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+        });
+        
+        // 5. Star Field Animation Generation
+        function generateStars() {
+            const container = document.getElementById('stars-container');
+            const numStars = 50;
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size (2px to 4px)
+                const size = Math.random() * 3 + 2; 
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                star.style.animationDuration = `${Math.random() * 8 + 7}s`; // 7s to 15s
+                
+                fragment.appendChild(star);
+            }
+            container.appendChild(fragment);
+        }
+
+        // --- INITIALIZATION ---
+        window.onload = () => {
+             // 1. Initial Data Load & Render
+             renderProjects(projectsData);
+
+             // 2. Start Typing Animation
+             typeText();
+             
+             // 3. Setup Scroll Handlers
+             window.addEventListener('scroll', updateScrollInteractions);
+             updateScrollInteractions(); 
+             
+             // 4. Generate Continuous Background Stars
+             generateStars();
+        }
+    </script>
+    
 </body>
 </html>
-
-
-
-
-
