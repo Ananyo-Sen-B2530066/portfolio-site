@@ -3,654 +3,761 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Ananyo Sen - Freelance Developer | Python, React, Machine Learning Developer</title>
+    <meta name="description" content="Ananyo Sen is a freelance developer specializing in Python, React, Machine Learning, and Web Development. Available for hire for data science, AI projects, and custom web applications.">
+    <meta name="keywords" content="Ananyo Sen, freelance developer, Python developer, React developer, machine learning engineer, web developer, data scientist, Kolkata developer, freelance programmer">
+    <meta name="author" content="Ananyo Sen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ananyo Sen - Freelance Developer">
+    <meta property="og:description" content="Professional freelance developer specializing in Python, React, and Machine Learning. Available for projects.">
+    <meta property="og:image" content="https://ananyosenportfolio.netlify.app/profile.jpg">
+    <meta property="og:url" content="https://ananyosenportfolio.netlify.app/">
+        
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ananyosenportfolio.netlify.app/">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Load Tailwind CSS -->
+    
+    <!-- Structured Data for Google (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ananyo Sen",
+      "url": "https://ananyosenportfolio.netlify.app/",
+      "image": "https://ananyosenportfolio.netlify.app/profile.jpg",
+      "jobTitle": "Freelance Developer",
+      "description": "Freelance developer specializing in Python, React, Machine Learning, and Web Development",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kolkata",
+        "addressRegion": "West Bengal",
+        "addressCountry": "India"
+      },
+      "email": "arka8868@gmail.com",
+      "telephone": "+917029281649",
+      "sameAs": [
+        "linkedin.com/in/ananyo-sen-7884b1362",
+        "https://github.com/Ananyo-Sen-B2530066",
+      ],
+      "knowsAbout": ["Python", "React", "Machine Learning", "Web Development", "Data Science", "TensorFlow", "PyTorch"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "RKMVERI"
+      }
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /*
-        * -------------------- CORE STYLING & ANIMATIONS --------------------
-        */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         * {
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #f5f7fa; /* Simpler background base */
-            color: #333;
-            scroll-behavior: smooth;
-        }
-        
-        /* 1. Header Styling (REDUCED SIZE) */
-        .header-content h1 {
-            font-size: 1.75rem;
-            line-height: 1.2;
-        }
-        .header-content p {
-            font-size: 1rem;
-        }
-        .header-nav {
-            gap: 1rem;
-        }
-        
-        /* 1.5. Header Transformation on Scroll */
-        #main-header {
-            transition: height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
-        }
-        .header-small {
-            height: 4rem; /* Reduced height */
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* 2. Hero Section Gradient & Continuous Star Field Animation */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a1a2e, #0f1629); /* Darker, more dramatic base */
-            z-index: 1; 
+        /* Animated gradient background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
 
-        /* Star Field Container */
-        .stars-container {
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neon glow effect */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
+                        0 0 40px rgba(102, 126, 234, 0.3),
+                        0 0 60px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Parallax layers */
+        .parallax-layer {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 10s infinite;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
-        /* 3. Interactivity & Transitions */
-        .interactive-element {
+        /* Skill bars animation */
+        @keyframes fillBar {
+            from { width: 0%; }
+        }
+
+        .skill-bar {
+            animation: fillBar 1.5s ease-out forwards;
+        }
+
+        /* Hover lift effect */
+        .hover-lift {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        /* Waving Hand Animation */
-        @keyframes wave {
-            0% { transform: rotate( 0.0deg) }
-            10% { transform: rotate(14.0deg) }
-            20% { transform: rotate(-8.0deg) }
-            30% { transform: rotate(14.0deg) }
-            40% { transform: rotate(-4.0deg) }
-            50% { transform: rotate(10.0deg) }
-            60% { transform: rotate( 0.0deg) }
-            100% { transform: rotate( 0.0deg) }
-        }
-        .animate-waving-hand {
-            animation: wave 2.5s infinite;
-            transform-origin: 70% 70%;
-            display: inline-block;
+
+        .hover-lift:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
         }
 
-        /* Project Card Liveliness (Lift & Tilt on Hover) */
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.03) rotateZ(0.5deg); /* More pronounced lift and tilt */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* 4. Scroll Reveal States (Enhanced: Lift, Scale, Rotate) */
-        .project-card {
-            opacity: 0; /* Start hidden */
-            transform: translateY(40px) scale(0.95) rotateX(10deg);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1) rotateX(0deg);
+        /* Typing cursor */
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
         }
 
-        /* 5. Global Pulse Shadow (Subtler) */
-        @keyframes shadow-pulse {
-            0% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.2); }
-            50% { box-shadow: 0 0 15px rgba(102, 126, 234, 0.6); }
-            100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.2); }
-        }
-        #main-content-wrapper {
-            animation: shadow-pulse 6s ease-in-out infinite;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        /* 6. Cursor Trail Dot */
-        #cursor-dot {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background-color: #0073e6;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            /* Short, fast transition for a noticeable trail effect */
-            transition: transform 0.05s linear, background-color 0.1s ease-out; 
-            box-shadow: 0 0 5px #0073e6, 0 0 10px #667eea;
-        }
-
-        /* Tech Stack Tag Pulse */
-        @keyframes tag-pulse {
-            0%, 100% { transform: scale(1); background-color: #e5e7eb; }
-            50% { transform: scale(1.05); background-color: #c3cfe2; }
-        }
-        .tag:hover {
-            animation: tag-pulse 0.5s ease;
-        }
-
-        /* Active Nav Link Indicator */
-        .active-nav {
-            position: relative;
-        }
-        .active-nav a { 
-             position: relative;
-             z-index: 2;
-        }
-        .active-nav::after {
-            content: '';
+        /* Particle effect */
+        .particle {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 3px;
-            width: 80%;
-            background-color: #0073e6;
-            border-radius: 1px;
-            animation: expand-line 0.3s ease-out forwards;
-        }
-        @keyframes expand-line {
-            from { width: 0; }
-            to { width: 80%; }
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.8);
+            pointer-events: none;
+            animation: particle-float 4s ease-in-out infinite;
         }
 
-        /* Dropdown Animation */
-        .dropdown-content {
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-            opacity: 0;
-            transform: translateY(-10px);
-            display: none; 
+        @keyframes particle-float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
         }
-        .dropdown:hover .dropdown-content {
-            display: block; 
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 5px;
+        }
+
+        /* Stats counter animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Timeline connector */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Call Me Icon Jiggle */
-        @keyframes jiggle {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50%, 70% { transform: rotate(8deg); }
-            20%, 40%, 60% { transform: rotate(-8deg); }
-            80% { transform: rotate(4deg); }
-            90% { transform: rotate(-4deg); }
-        }
-        .animate-jiggle {
-            display: inline-block;
-            animation: jiggle 4s ease-in-out infinite 2s; /* Start after a delay */
-        }
-        
-        /* Contact Form Interactivity */
-        input:focus, textarea:focus {
-            box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.3) !important;
-            border-color: #0073e6 !important;
-            outline: none;
-        }
-        .contact-submit-btn:active {
-            transform: scale(0.98);
-            background-color: #005bb5;
-            transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+        /* Magnetic button effect */
+        .magnetic {
+            transition: transform 0.2s ease-out;
         }
 
-        /* Responsive adjustments for navigation on mobile */
-        @media (max-width: 768px) {
-             .header-content {
-                align-items: flex-start;
-            }
-            .header-nav {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            .header-nav > * {
-                width: 100%;
-            }
-            .dropdown-content {
-                position: static !important;
-                width: 100%;
-            }
+        /* Profile image shimmer */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        /* Tech stack grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Testimonial card */
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(102, 126, 234, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Badge pulse */
+        .badge-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    AS
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+                    <a href="cv.pdf" download class="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full hover:shadow-lg hover:shadow-purple-500/50 transition">
+                        Download CV
+                    </a>
+                </div>
 
-    <!-- Header / Sticky Navigation (Original Dark Color: #1a1a2e) -->
-    <header id="main-header" class="sticky top-0 z-50 bg-[#1a1a2e] text-white shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center h-auto sm:h-16 py-3 sm:py-2">
+                <button id="mobileMenuBtn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-64 bg-black/95 backdrop-blur-lg z-50 md:hidden p-6">
+        <button id="closeMobileMenu" class="absolute top-4 right-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="flex flex-col gap-6 mt-16">
+            <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+            <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+            <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
+            <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg">
+        <!-- Animated background elements -->
+        <div id="particles" class="absolute inset-0"></div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-6 border border-white/20">
+                <span class="text-sm">👋 Available for Freelance Projects</span>
+            </div>
             
-            <!-- 3D Transform on Name (Mouse Interaction) -->
-            <div class="header-content mb-3 sm:mb-0 transform-style-preserve-3d" id="header-name-wrapper">
-                <h1 class="text-white font-extrabold" id="header-name">Ananyo Sen</h1>
-                <p class="text-[#c3cfe2] mt-0">• Freelance Developer •</p>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 typing" id="heroText"></h1>
+            
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                I'm <span class="font-bold text-yellow-300">Ananyo Sen</span>, a passionate freelance developer who transforms ideas into elegant digital solutions. Let's build something extraordinary together.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="magnetic px-8 py-4 bg-white text-purple-600 rounded-full font-bold hover:bg-opacity-90 transition neon-glow">
+                    Let's Work Together
+                </a>
+                <a href="#projects" class="px-8 py-4 bg-transparent border-2 border-white rounded-full font-bold hover:bg-white hover:text-purple-600 transition">
+                    View My Work
+                </a>
             </div>
 
-            <!-- Navigation Links (Active Link Tracking) -->
-            <nav class="header-nav flex flex-wrap sm:flex-nowrap sm:flex-row">
+            <!-- Stats -->
+            <div class="grid grid-cols-2 gap-8 mt-20 max-w-xl mx-auto">
+                <div class="glass rounded-2xl p-6">
+                    <div class="text-4xl font-bold stat-number" data-target="5">0</div>
+                    <div class="text-sm text-white/70 mt-2">Projects Completed</div>
+                </div>
+                <div class="glass rounded-2xl p-6">
+                    <div class="text-4xl font-bold stat-number" data-target="2">0</div>
+                    <div class="text-sm text-white/70 mt-2">Years Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                <div class="w-1.5 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <!-- Professional Photo Container -->
+                        <div class="relative w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 shimmer">
+                            <!-- Replace 'profile.jpg' with your actual photo file -->
+                            <img src="profile.jpg" alt="Ananyo Sen - Freelance Developer from Kolkata" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                            <!-- Overlay gradient for better text readability if needed -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        </div>
+                        <!-- Decorative border -->
+                        <div class="absolute -bottom-6 -right-6 w-full h-96 rounded-3xl border-2 border-purple-500/30 pointer-events-none"></div>
+                        <!-- Optional: Floating badge -->
+                        <div class="absolute -top-4 -left-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-bold shadow-lg neon-glow">
+                            Open to Work 🚀
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- Dropdown for Projects (Animated) -->
-                <div class="relative dropdown" id="nav-projects">
-                    <a href="#projects" class="dropbtn block text-center text-white text-base hover:bg-[#0073e6] px-4 py-2 rounded-md interactive-element">Projects ▾</a>
-                    <!-- Dynamic Dropdown Links -->
-                    <div id="project-dropdown" class="dropdown-content absolute left-0 w-full sm:w-48 bg-[#1a1a2e] rounded-lg shadow-xl py-1 hidden">
-                        <!-- Links generated by JS -->
+                <div class="reveal">
+                    <div class="inline-block px-4 py-2 bg-purple-600/20 rounded-full mb-6">
+                        <span class="text-sm text-purple-400">About Me</span>
+                    </div>
+                    
+                    <h2 class="text-5xl font-bold mb-6">Crafting Digital Experiences</h2>
+                    
+                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                        I'm a <strong>freelance developer from Kolkata</strong> with a passion for creating innovative solutions that make a difference. With expertise in <strong>Python programming</strong>, <strong>machine learning algorithms</strong>, and <strong>modern web development</strong>, I bring a unique analytical approach to every project.
+                    </p>
+                    
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Whether it's building complex <strong>data science models</strong>, designing intuitive <strong>React applications</strong>, or solving challenging computational problems, I'm driven by curiosity and a commitment to excellence. I've worked on projects ranging from <strong>reinforcement learning environments</strong> to <strong>real-time auction systems</strong>.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full text-sm">Python Developer</span>
+                        <span class="px-4 py-2 bg-green-600/20 text-green-400 rounded-full text-sm">Amateur React User</span>
+                        <span class="px-4 py-2 bg-purple-600/20 text-purple-400 rounded-full text-sm">ML Engineer</span>
+                        <span class="px-4 py-2 bg-yellow-600/20 text-yellow-400 rounded-full text-sm">Full Stack Dev</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-4 py-2 bg-purple-600/20 rounded-full mb-6">
+                    <span class="text-sm text-purple-400">Portfolio</span>
+                </div>
+                <h2 class="text-5xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-gray-400 text-xl">Showcasing my best work and achievements</p>
+            </div>
+
+            <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-4 py-2 bg-purple-600/20 rounded-full mb-6">
+                    <span class="text-sm text-purple-400">Expertise</span>
+                </div>
+                <h2 class="text-5xl font-bold mb-4">Skills & Technologies</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">Python & Machine Learning</span>
+                            <span class="text-purple-400">90%</span>
+                        </div>
+                        <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">React & JavaScript</span>
+                            <span class="text-purple-400">85%</span>
+                        </div>
+                        <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="skill-bar h-full bg-gradient-to-r from-green-500 to-teal-600" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">UI/UX Design</span>
+                            <span class="text-purple-400">80%</span>
+                        </div>
+                        <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="skill-bar h-full bg-gradient-to-r from-pink-500 to-red-600" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="nav-contact">
-                    <a href="#contact" class="block text-center text-white text-base hover:bg-[#0073e6] px-4 py-2 rounded-md interactive-element">Contact</a>
+                <div class="reveal tech-grid">
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">🐍</div>
+                        <div class="text-sm">Python</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">⚛️</div>
+                        <div class="text-sm">React</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">🤖</div>
+                        <div class="text-sm">TensorFlow</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">📊</div>
+                        <div class="text-sm">Matplotlib</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">🎨</div>
+                        <div class="text-sm">Tailwind</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover-lift">
+                        <div class="text-3xl mb-2">🔥</div>
+                        <div class="text-sm">PyTorch</div>
+                    </div>
                 </div>
-                
-                <!-- CV Links -->
-                <a href="cv.pdf" target="_blank" class="block text-center text-white text-base bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-md font-medium interactive-element">📄 View CV</a>
-                <a href="cv.pdf" download class="block text-center text-white text-base bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-md font-medium interactive-element">⬇️ Download CV</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Global Cursor Dot -->
-    <div id="cursor-dot"></div>
-
-    <!-- Main Content Wrapper with Global Pulse Shadow -->
-    <div id="main-content-wrapper" class="flex-grow">
-    
-        <!-- Hero Section (Animated Gradient, Typing Effect, Star Field) -->
-        <section class="hero-section flex flex-col justify-center items-start px-8 sm:px-16 min-h-[60vh] text-white" id="hero">
-            <!-- Continuous Motion Background Element -->
-            <div class="stars-container" id="stars-container"></div>
-            
-            <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 z-10">
-                <span id="hero-title-text" class="border-r-2 border-white pr-1"></span>
-                <span class="animate-waving-hand text-5xl sm:text-6xl inline-block">👋</span>
-            </h2>
-            <p id="hero-subtitle" class="text-xl sm:text-2xl mb-8 leading-relaxed max-w-3xl opacity-0 transition duration-700 ease-out z-10">
-                I’m <strong class="font-extrabold">Ananyo Sen</strong> — a passionate freelancer driven by creativity, curiosity, and a love for meaningful work. Whether I’m building, designing, writing, or solving problems, my goal is simple: to create value that truly matters...
-            </p>
-            <!-- CTA button using original colors -->
-            <a href="#contact" class="cta-btn text-lg font-bold py-3 px-6 rounded-lg bg-white text-[#764ba2] hover:bg-[#e0d4f7] interactive-element z-10">
-                Let’s Talk
-            </a>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section max-w-7xl mx-auto py-16">
-            <h2 class="text-4xl font-bold text-center mb-16 text-[#1a1a2e]">My Projects</h2>
-
-            <!-- Project Display Area -->
-            <div id="projects-container" class="projects-container px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-                <p id="loading-message" class="col-span-full text-center text-lg text-gray-500">Loading projects...</p>
-                <!-- Projects will be dynamically loaded here by JavaScript -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section (Animated Call Icon, Input Glow, Button Press) -->
-        <section id="contact" class="contact-section bg-[#e0e7ff] py-16 max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 text-[#1a1a2e]">Contact Me</h2>
-            
-            <div class="max-w-2xl mx-auto p-8 rounded-xl shadow-2xl bg-white border-t-8 border-[#1a1a2e]">
-                <p class="text-center text-lg text-gray-600 mb-8">
-                    Ready to collaborate? Let's discuss your next project!
-                </p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-4 py-2 bg-purple-600/20 rounded-full mb-6">
+                    <span class="text-sm text-purple-400">Get In Touch</span>
+                </div>
+                <h2 class="text-5xl font-bold mb-4">Let's Create Together</h2>
+                <p class="text-gray-400 text-xl">Ready to bring your ideas to life? Let's talk!</p>
+            </div>
 
-                <!-- Contact Form (Using Formspree as mock backend) -->
+            <div class="glass rounded-3xl p-8 reveal neon-glow">
                 <form action="https://formspree.io/f/mldprpbb" method="POST" class="space-y-6">
-                    <label class="block">
-                        <span class="text-gray-700 font-medium">Your Email:</span>
-                        <input type="email" name="email" required placeholder="name@example.com"
-                            class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:border-[#0073e6] focus:ring-[#0073e6]">
-                    </label>
-                    <label class="block">
-                        <span class="text-gray-700 font-medium">Your Message:</span>
-                        <textarea name="message" required rows="5" placeholder="Tell me about your project..."
-                                class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-3 focus:border-[#0073e6] focus:ring-[#0073e6]"></textarea>
-                    </label>
-                    <!-- Added class for button press animation -->
-                    <button type="submit" class="contact-submit-btn w-full bg-[#1a1a2e] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#0073e6] interactive-element">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" name="name" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" name="email" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea name="message" required rows="5"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/50 transition">
                         Send Message
                     </button>
                 </form>
 
-                <div class="mt-8 pt-6 border-t border-gray-300 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="mailto:arka8868@gmail.com" class="contact-btn email-btn flex items-center justify-center text-white bg-[#1a1a2e] hover:bg-[#0073e6] py-3 px-4 rounded-lg font-medium interactive-element">
-                        <span class="mr-2">📧</span> Email Me
+                <div class="grid md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
+                    <a href="mailto:arka8868@gmail.com" class="flex items-center justify-center gap-2 px-4 py-3 glass rounded-xl hover-lift">
+                        <span>📧</span>
+                        <span>Email</span>
                     </a>
-                    <a href="tel:+917029281649" class="contact-btn call-btn flex items-center justify-center text-white bg-[#1a1a2e] hover:bg-[#0073e6] py-3 px-4 rounded-lg font-medium interactive-element">
-                        <!-- Added animate-jiggle class for subtle motion -->
-                        <span class="mr-2 animate-jiggle">📞</span> Call Me
+                    <a href="tel:+917029281649" class="flex items-center justify-center gap-2 px-4 py-3 glass rounded-xl hover-lift">
+                        <span>📞</span>
+                        <span>Call</span>
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div><!-- End of main-content-wrapper -->
-
-    <!-- Footer (Original Dark Color: #1a1a2e) -->
-    <footer class="bg-[#1a1a2e] text-white py-6 mt-auto border-t-2 border-[#0073e6]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm">&copy; <span id="year"></span> Ananyo Sen. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="py-8 bg-black border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; <span id="year"></span> Ananyo Sen. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Dynamic Interactions and Data Loading -->
     <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // --- HARDCODED PROJECT DATA (Simulating Backend Load) ---
-        const projectsData = [
+        // Projects data
+        const projects = [
             {
                 id: 'ug-dissertation',
                 name: 'UG Dissertation Research',
-                description: 'My undergraduate dissertation, focusing on Bessel Function and its some applications in solving ODE problems.',
-                tags: 'ODE, Bessel Function, Mathematics',
-                viewUrl: 'projects/ug_dissertation.pdf',
-                downloadUrl: 'projects/ug_dissertation.pdf',
-                viewLink: '#',
-                borderClass: '#0073e6',
-                timestamp: 1678886400000 // April 26, 2025
+                description: 'Research on Bessel Functions and applications in solving ODE problems',
+                tags: ['Mathematics', 'ODE', 'Bessel Functions'],
+                color: 'from-blue-500 to-cyan-500',
+                viewUrl: 'projects/ug_dissertation.pdf'
             },
             {
-                id: 'video-game-sale-analysis',
+                id: 'video-game-analysis',
                 name: 'Video Game Sales Analysis',
-                description: 'A report on the sales of different video games, analysing them through regression models built with Python.',
-                tags: 'Python, Boosting, Trees, MatPlotLib',
-                viewUrl: '#',
-                downloadUrl: null,
-                viewLink: '#',
-                borderClass: '#4a5568', // Gray-600 equivalent
-                timestamp: 1686979200000 // November 19, 2025
+                description: 'Comprehensive analysis using regression models and Python',
+                tags: ['Python', 'ML', 'Data Science'],
+                color: 'from-green-500 to-emerald-500'
             },
             {
-                id: 'custom-environment-building',
+                id: 'treasure-hunt',
                 name: 'Treasure Hunt Environment',
-                description: 'Developed a custom environment on Treasure Hunt using Gymnasium and trained the agent using RL to solve the maze.',
-                tags: 'Gymnasium, TensorFlow, Pandas, Torch',
-                viewUrl: '#',
-                downloadUrl: null,
-                viewLink: '#',
-                borderClass: '#48bb78', // Green-600 equivalent
-                timestamp: 1699056000000 // December 17, 2025
+                description: 'Custom RL environment with Gymnasium and agent training',
+                tags: ['RL', 'TensorFlow', 'PyTorch'],
+                color: 'from-purple-500 to-pink-500'
             },
             {
                 id: 'auction-ui',
                 name: 'Cricket Auction UI',
-                description: 'Built an UI for arranging a cricket Auction for a college fest event, allowing the user with ease of work, while providing convincing and real visual datas to the team managers.',
-                tags: 'React App, JavaScript, UI',
-                viewUrl: '#',
-                downloadUrl: null,
-                viewLink: 'https://auction-perceptron-window.vercel.app/',
-                borderClass: '#9f7aea', // Purple-500 equivalent
-                timestamp: 1708899200000 // January 11, 2025
+                description: 'Interactive auction interface for college fest with real-time data',
+                tags: ['React', 'JavaScript', 'UI'],
+                color: 'from-orange-500 to-red-500',
+                viewLink: 'https://auction-perceptron-window.vercel.app/'
             },
             {
-                id: 'custom-quiz-ui',
-                name: 'Custom Quiz UI',
-                description: 'UI for preparing a custom quiz which allows other user to take on and check their performances, compare results, and also ensures non-ethical methods are not entertained.',
-                tags: 'HTML, JavaScript, UI',
-                viewUrl: '#',
-                downloadUrl: null,
-                viewLink: 'https://quiz-platform-2gr0.onrender.com/',
-                borderClass: '#FFD700', // Purple-500 equivalent
-                timestamp: 1715676200000 // December 25, 2024
+                id: 'quiz-ui',
+                name: 'Custom Quiz Platform',
+                description: 'Quiz platform with performance tracking and anti-cheat measures',
+                tags: ['HTML', 'JavaScript', 'UI/UX'],
+                color: 'from-yellow-500 to-amber-500',
+                viewLink: 'https://quiz-platform-2gr0.onrender.com/'
             }
         ];
 
+        // Load projects
+        function loadProjects() {
+            const grid = document.getElementById('projectsGrid');
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'reveal glass rounded-2xl p-6 hover-lift';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="h-40 bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center text-6xl">
+                        ${index === 0 ? '📚' : index === 1 ? '🎮' : index === 2 ? '🎯' : index === 3 ? '🏏' : '❓'}
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">${project.name}</h3>
+                    <p class="text-gray-400 mb-4">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.tags.map(tag => `<span class="px-3 py-1 bg-white/10 rounded-full text-xs">${tag}</span>`).join('')}
+                    </div>
+                    ${project.viewUrl ? `<a href="${project.viewUrl}" target="_blank" class="inline-block px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition text-sm">View Project →</a>` : ''}
+                    ${project.viewLink ? `<a href="${project.viewLink}" target="_blank" class="inline-block px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition text-sm ml-2">Live Demo →</a>` : ''}
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
 
-        // --- UI ELEMENTS ---
-        const projectsContainer = document.getElementById('projects-container');
-        const loadingMessage = document.getElementById('loading-message');
-        
-        // --- SCROLL OBSERVER SETUP ---
-        const observerOptions = {
-            root: null, 
-            rootMargin: '0px',
-            threshold: 0.1 
-        };
+        // Typing effect
+        const text = 'Ananyo Sen';
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                document.getElementById('heroText').textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 100);
+            }
+        }
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        // Stats counter
+        function animateStats() {
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                const target = parseInt(stat.dataset.target);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.dataset.target === '100' ? '%' : '+');
+                    }
+                }, 30);
+            });
+        }
+
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+                particle.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Reveal on scroll
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
                 }
             });
-        }, observerOptions);
-
-        // --- UTILITY FUNCTIONS ---
-
-        function createProjectCard(project) {
-            const card = document.createElement('div');
-            card.id = `project-${project.id}`;
-            
-            // Generate tags HTML
-            const tagsHtml = project.tags.split(',').map(tag => {
-                const trimmedTag = tag.trim();
-                return `<span class="tag text-sm bg-gray-200 text-gray-700 py-2 px-4 rounded-full font-medium interactive-element">${trimmedTag}</span>`;
-            }).join('');
-
-            // Set dynamic border color
-            const borderStyle = project.borderClass.startsWith('#') ? `border-top: 4px solid ${project.borderClass};` : `border-t-4 border-${project.borderClass.replace('#', '')}`;
-
-            // Start project card hidden for scroll reveal
-            card.className = `project-card bg-white rounded-xl p-8 shadow-xl interactive-element`;
-            card.style.cssText = borderStyle;
-
-            card.innerHTML = `
-                <h3 class="text-2xl font-semibold mb-3" style="color: ${project.borderClass};">${project.name}</h3>
-                <p class="text-gray-600 mb-6 leading-relaxed">${project.description}</p>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    ${tagsHtml}
-                </div>
-                <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t border-gray-100">
-                    ${project.viewUrl && project.viewUrl !== '#' ? `<a href="${project.viewUrl}" target="_blank" class="text-sm border border-[#0073e6] text-[#0073e6] py-2 px-4 rounded-lg font-medium hover:bg-blue-50 interactive-element">
-                        📄 View Project
-                    </a>` : ''}
-                    ${project.downloadUrl ? `<a href="${project.downloadUrl}" download class="text-sm bg-[#0073e6] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#005bb5] interactive-element">
-                        ⬇️ Download
-                    </a>` : ''}
-                    ${project.viewLink && project.viewLink !== '#' ? `<a href="${project.viewLink}" target="_blank" class="text-sm border border-[#0073e6] text-[#0073e6] py-2 px-4 rounded-lg font-medium hover:bg-blue-50 interactive-element">
-                        🔗 View URL
-                    </a>` : ''}
-                    ${(project.viewUrl === '#' || !project.viewUrl) && !project.downloadUrl && project.viewLink === '#' ? `<span class="text-sm text-gray-500 py-2 px-4">Link will be available soon.</span>` : ''}
-                </div>
-            `;
-            
-            observer.observe(card);
-            return card;
         }
 
-        // Function to render the entire project list
-        function renderProjects(projects) {
-            projectsContainer.innerHTML = '';
-            document.getElementById('project-dropdown').innerHTML = ''; // Clear dropdown
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('active');
+        });
 
-            if (projects.length === 0) {
-                projectsContainer.innerHTML = `<p class="col-span-full text-center text-lg text-gray-500">No projects defined in the data source.</p>`;
-                document.getElementById('project-dropdown').innerHTML = `<a href="#projects" class="block px-4 py-2 text-sm text-white hover:bg-[#0073e6]">No Projects</a>`;
-                return;
-            }
+        document.getElementById('closeMobileMenu').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
 
-            projects.forEach((project) => {
-                // Main project display
-                projectsContainer.appendChild(createProjectCard(project));
-
-                // Navigation dropdown link
-                const dropdownLink = document.createElement('a');
-                dropdownLink.href = `#project-${project.id}`;
-                dropdownLink.className = 'block px-4 py-2 text-sm text-white hover:bg-[#0073e6] transition';
-                dropdownLink.textContent = project.name.substring(0, 30); // Truncate long names for dropdown
-                document.getElementById('project-dropdown').appendChild(dropdownLink);
+        // Close menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
             });
-            loadingMessage.classList.add('hidden');
-        }
-
-        // --- ANIMATION / INTERACTION LOGIC ---
-
-        // 1. Typing Effect
-        const titleTextElement = document.getElementById('hero-title-text');
-        const subtitleElement = document.getElementById('hero-subtitle');
-        const textToType = 'Welcome';
-        let charIndex = 0;
-
-        function typeText() {
-            if (charIndex < textToType.length) {
-                titleTextElement.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeText, 100);
-            } else {
-                titleTextElement.classList.remove('border-r-2', 'border-white', 'pr-1');
-                setTimeout(() => {
-                    subtitleElement.classList.remove('opacity-0');
-                    subtitleElement.classList.add('opacity-100');
-                }, 500);
-            }
-        }
-        
-        // 2. 3D Transform on Name (Mouse Interaction)
-        const nameWrapper = document.getElementById('header-name-wrapper');
-        const headerName = document.getElementById('header-name');
-
-        nameWrapper.addEventListener('mousemove', (e) => {
-            const rect = nameWrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            const offsetX = (e.clientX - centerX) / (rect.width / 2);
-            const offsetY = (e.clientY - centerY) / (rect.height / 2);
-            
-            const rotateY = offsetX * 5;
-            const rotateX = -offsetY * 5;
-            
-            headerName.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            headerName.style.transition = 'none';
         });
 
-        nameWrapper.addEventListener('mouseleave', () => {
-            headerName.style.transition = 'transform 0.5s ease-out';
-            headerName.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+        // Magnetic button effect
+        document.querySelectorAll('.magnetic').forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0, 0)';
+            });
         });
 
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-        // 3. Scroll Listener for Header Shrink and Active Link
-        const header = document.getElementById('main-header');
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = {
-            'projects': document.getElementById('nav-projects'),
-            'contact': document.getElementById('nav-contact')
-        };
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            type();
+            loadProjects();
+            createParticles();
+            animateStats();
+            reveal();
+        });
 
-        function updateScrollInteractions() {
-            const scrollY = window.scrollY;
+        window.addEventListener('scroll', reveal);
 
-            // Header Shrink Logic
-            if (scrollY > 50) {
-                header.classList.add('header-small');
-            } else {
-                header.classList.remove('header-small');
-            }
-
-            // Active Link Highlighting
-            let currentSection = null;
-
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - header.offsetHeight - 50; 
-                const sectionHeight = section.offsetHeight;
-
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.id;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
                 }
             });
 
-            // Update classes on navigation links
-            Object.keys(navLinks).forEach(key => {
-                const navElement = navLinks[key];
-                
-                if (navElement) {
-                     navElement.classList.remove('active-nav');
-                }
-
-                if (key === currentSection) {
-                    navElement.classList.add('active-nav');
+            navLinks.forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-gray-300');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-white');
                 }
             });
-        }
-
-        // 4. Cursor Trail (Dot following mouse)
-        const cursorDot = document.getElementById('cursor-dot');
-
-        document.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = `${e.clientX}px`;
-            cursorDot.style.top = `${e.clientY}px`;
         });
-        
-        // 5. Star Field Animation Generation
-        function generateStars() {
-            const container = document.getElementById('stars-container');
-            const numStars = 50;
-            const fragment = document.createDocumentFragment();
-
-            for (let i = 0; i < numStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Random size (2px to 4px)
-                const size = Math.random() * 3 + 2; 
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // Random position
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation delay and duration
-                star.style.animationDelay = `${Math.random() * 5}s`;
-                star.style.animationDuration = `${Math.random() * 8 + 7}s`; // 7s to 15s
-                
-                fragment.appendChild(star);
-            }
-            container.appendChild(fragment);
-        }
-
-        // --- INITIALIZATION ---
-        window.onload = () => {
-             // 1. Initial Data Load & Render
-             renderProjects(projectsData);
-
-             // 2. Start Typing Animation
-             typeText();
-             
-             // 3. Setup Scroll Handlers
-             window.addEventListener('scroll', updateScrollInteractions);
-             updateScrollInteractions(); 
-             
-             // 4. Generate Continuous Background Stars
-             generateStars();
-        }
     </script>
-    
 </body>
 </html>
-
