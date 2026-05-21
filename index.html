@@ -344,7 +344,7 @@
             <!-- Stats -->
             <div class="grid grid-cols-2 gap-8 mt-20 max-w-xl mx-auto">
                 <div class="glass rounded-2xl p-6">
-                    <div class="text-4xl font-bold stat-number" data-target="5">0</div>
+                    <div class="text-4xl font-bold stat-number" data-target="7">0</div>
                     <div class="text-sm text-white/70 mt-2">Projects Completed</div>
                 </div>
                 <div class="glass rounded-2xl p-6">
@@ -869,6 +869,22 @@
                 tags: ['HTML', 'JavaScript', 'UI/UX'],
                 color: 'from-yellow-500 to-amber-500',
                 viewLink: 'https://quiz-platform-2gr0.onrender.com/'
+            },
+            {
+                id: 'distributed-gaming',
+                name: 'Distributed Gaming Analytics',
+                description: 'Scalable gaming analytics system using Ray for parallel player analysis, ML prediction, and statistical evaluation across distributed worker nodes',
+                tags: ['Python', 'Ray', 'Flask', 'ML', 'Distributed'],
+                color: 'from-cyan-500 to-blue-600',
+                viewUrl: 'projects/distributed_gaming_analytics.pdf'
+            },
+            {
+                id: 'sports-video-dl',
+                name: 'Sports Video Understanding',
+                description: 'Multi-modal deep learning framework for sports event detection, tactical analysis via GNNs, and match tension estimation using the SoccerNet dataset',
+                tags: ['PyTorch', 'Deep Learning', 'GNN', 'LSTM', 'Computer Vision'],
+                color: 'from-rose-500 to-orange-500',
+                viewUrl: 'projects/sports_video_analysis.pdf'
             }
         ];
 
@@ -882,7 +898,7 @@
                 
                 card.innerHTML = `
                     <div class="h-40 bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center text-6xl">
-                        ${index === 0 ? '📚' : index === 1 ? '🎮' : index === 2 ? '🎯' : index === 3 ? '🏏' : '❓'}
+                        ${['📚','🎮','🎯','🏏','❓','🕹️','⚽'][index] || '🔬'}
                     </div>
                     <h3 class="text-2xl font-bold mb-3">${project.name}</h3>
                     <p class="text-gray-400 mb-4">${project.description}</p>
@@ -1035,8 +1051,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
