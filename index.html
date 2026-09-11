@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Ananyo Sen - Data Science & AI Student | Python, ML, Full-Stack Developer</title>
+    <meta name="description" content="Ananyo Sen is a Data Science & AI graduate student at RKMVERI with a Mathematics background. Explore his academic research, machine learning projects, and technical skills.">
+    <meta name="keywords" content="Ananyo Sen, data science student, Python developer, machine learning, AI student, React developer, RKMVERI, student portfolio, Kolkata student developer">
+    <meta name="author" content="Ananyo Sen">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#08080f">
+
+    <!-- Plausible Analytics
+         Note: this only sends data once you create a free account at https://plausible.io
+         and add the site domain exactly as it appears below (or your custom domain). -->
+    <script defer data-domain="ananyosenportfolio.netlify.app" src="https://plausible.io/js/script.js"></script>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ananyo Sen - Portfolio">
+    <meta property="og:title" content="Ananyo Sen - Data Science & AI Student">
+    <meta property="og:description" content="Data Science & AI graduate student building research and real-world projects in Python, Machine Learning, and Web Development.">
+    <meta property="og:image" content="https://ananyosenportfolio.netlify.app/og-banner.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://ananyosenportfolio.netlify.app/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ananyo Sen - Data Science & AI Student">
+    <meta name="twitter:description" content="Data Science & AI graduate student building research and real-world projects in Python, Machine Learning, and Web Development.">
+    <meta name="twitter:image" content="https://ananyosenportfolio.netlify.app/og-banner.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ananyosenportfolio.netlify.app/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Structured Data for Google (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ananyo Sen",
+      "url": "https://ananyosenportfolio.netlify.app/",
+      "image": "https://ananyosenportfolio.netlify.app/profile.png",
+      "jobTitle": "Data Science & AI Student",
+      "description": "Graduate student in Data Science & Artificial Intelligence with a Mathematics background, focused on machine learning research and applied projects",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kolkata",
+        "addressRegion": "West Bengal",
+        "addressCountry": "India"
+      },
+      "email": "arka8868@gmail.com",
+      "telephone": "+917029281649",
+      "sameAs": [
+        "https://www.linkedin.com/in/ananyo-sen-7884b1362",
+        "https://github.com/Ananyo-Sen-B2530066"
+      ],
+      "knowsAbout": ["Python", "React", "Machine Learning", "Web Development", "Data Science", "TensorFlow", "PyTorch"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "RKMVERI"
+      }
+    }
+    </script>
+</head>
+<body class="grain">
+    <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+    <a href="#about" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-md border-b border-white/10">
+        <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+            <a href="#home" class="font-display text-2xl font-bold text-primary" aria-label="Ananyo Sen — home">
+                AS<span class="text-accent">.</span>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-7">
+                <ul class="flex items-center gap-7">
+                    <li><a href="#about" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">About</a></li>
+                    <li><a href="#strengths" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Strengths</a></li>
+                    <li><a href="#education" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Education</a></li>
+                    <li><a href="#research" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Research</a></li>
+                    <li><a href="#projects" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Projects</a></li>
+                    <li><a href="#skills" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Skills</a></li>
+                    <li><a href="#contact" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Contact</a></li>
+                </ul>
+                <div data-social="github,linkedin" data-social-compact class="flex items-center gap-1.5"></div>
+                <a href="cv.pdf" download class="btn-shine px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary-deep shadow-soft transition">
+                    Download CV
+                </a>
+            </div>
+
+            <button id="mobileMenuBtn" class="lg:hidden text-ink p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 bottom-0 w-72 bg-surface z-[60] lg:hidden p-6 border-l border-white/10 translate-x-full transition-transform duration-300" role="dialog" aria-modal="true" aria-label="Mobile menu">
+        <button id="closeMobileMenu" class="absolute top-4 right-4 text-ink p-2" aria-label="Close menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="flex flex-col gap-1 mt-16">
+            <a href="#about" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">About</a>
+            <a href="#strengths" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Strengths</a>
+            <a href="#education" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Education</a>
+            <a href="#research" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Research</a>
+            <a href="#projects" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Projects</a>
+            <a href="#skills" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Skills</a>
+            <a href="#contact" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Contact</a>
+        </div>
+        <a href="cv.pdf" download class="mt-6 block text-center px-5 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-deep shadow-soft transition">
+            Download CV
+        </a>
+    </div>
+
+    <main id="home">
+        <!-- Hero -->
+        <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+            <div class="grid-overlay absolute inset-0" aria-hidden="true"></div>
+            <div class="absolute -top-40 -right-40 w-[42rem] h-[42rem] rounded-full bg-primary/20 blur-3xl" aria-hidden="true"></div>
+            <div class="absolute top-1/3 -left-48 w-[34rem] h-[34rem] rounded-full bg-accent/15 blur-3xl" aria-hidden="true"></div>
+            <div class="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-glow/10 blur-3xl" aria-hidden="true"></div>
+            <div id="mathSymbols" class="absolute inset-0" aria-hidden="true"></div>
+
+            <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 reveal">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent shadow-[0_0_10px_rgba(236,72,153,0.8)]" aria-hidden="true"></span>
+                        <span class="font-mono text-sm text-ink-soft">Data Science &amp; AI · Graduate Student</span>
+                    </div>
+
+                    <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-5 text-gradient">
+                        Ananyo Sen
+                    </h1>
+
+                    <p class="font-mono text-base sm:text-lg text-ink-soft mb-6">
+                        <span class="text-accent">$</span> <span class="typing-caret" id="heroLine" aria-label="Hero line"></span>
+                    </p>
+
+                    <p class="font-mono text-base sm:text-lg text-ink-soft mb-7">
+                        <span class="text-accent">$</span> <span class="typing-caret" id="heroType" aria-label="Typed introduction"></span>
+                    </p>
+
+                    <p class="text-xl lg:text-2xl text-ink-soft mb-8 max-w-2xl leading-relaxed">
+                        I'm <span class="font-semibold text-ink">Ananyo Sen</span>, a Mathematics graduate now building AI systems. I learn by building — turning ML theory, research papers, and coursework into working projects I can point to.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                        <a href="#contact" class="btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary-deep hover:shadow-[0_0_28px_rgba(168,85,247,0.45)] shadow-soft transition">
+                            Get In Touch
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                        </a>
+                        <a href="#projects" class="inline-flex items-center justify-center px-8 py-4 bg-white/5 border border-white/15 text-ink font-semibold rounded-full hover:border-accent hover:text-accent transition">
+                            View My Work
+                        </a>
+                    </div>
+
+                    <div data-social="github,linkedin,mail" class="flex items-center gap-3 mb-10"></div>
+
+                    <dl class="grid grid-cols-3 gap-4 max-w-lg">
+                        <div class="card p-5">
+                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="7">0</dd>
+                            <dt class="text-sm text-ink-soft mt-1.5">Projects Built</dt>
+                        </div>
+                        <div class="card p-5">
+                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="12">0</dd>
+                            <dt class="text-sm text-ink-soft mt-1.5">Technologies</dt>
+                        </div>
+                        <div class="card p-5">
+                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="2">0</dd>
+                            <dt class="text-sm text-ink-soft mt-1.5">Years in Program</dt>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- Portrait card -->
+                <div class="lg:col-span-5 reveal">
+                    <div class="relative max-w-sm mx-auto">
+                        <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/30 via-glow/20 to-accent/30 rotate-3 blur-sm" aria-hidden="true"></div>
+                        <div id="portraitReveal" class="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-gradient-to-br from-violet-600 via-fuchsia-500 to-accent shadow-glow">
+                            <span class="absolute inset-0 flex items-center justify-center font-display text-7xl font-semibold text-white/25" aria-hidden="true">AS</span>
+                            <img src="profile.png" alt="Ananyo Sen - Data Science &amp; AI Student from Kolkata"
+                                 class="absolute inset-0 w-full h-full object-cover"
+                                 decoding="async"
+                                 onerror="this.style.display='none'">
+                            <span id="portraitScanline" class="portrait-scanline" aria-hidden="true"></span>
+                        </div>
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface border border-white/10 rounded-full px-5 py-2.5 shadow-lift flex items-center gap-2">
+                            <span class="text-lg" aria-hidden="true">🎓</span>
+                            <span class="text-sm font-semibold text-ink">M.Sc Data Science &amp; AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animated code terminal -->
+            <div class="relative max-w-5xl mx-auto px-6 mt-16 lg:mt-20 reveal">
+                <div class="terminal" role="region" aria-label="Animated Python terminal">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot bg-rose-400/90" aria-hidden="true"></span>
+                        <span class="terminal-dot bg-amber-300/90" aria-hidden="true"></span>
+                        <span class="terminal-dot bg-emerald-400/90" aria-hidden="true"></span>
+                        <span class="font-mono text-sm text-ink-faint ml-3">main.py — Ananyo Sen</span>
+                    </div>
+                    <code id="terminalCode" class="block font-mono text-[13px] sm:text-sm leading-[1.9] p-6" aria-label="Example Python code"></code>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-7 reveal">
+                        <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 01 ] · about me</p>
+                        <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-6">From Coursework to Real Code</h2>
+
+                        <div class="space-y-5 text-lg text-ink-soft leading-relaxed">
+                            <p>
+                                I'm a <strong class="text-ink">Data Science &amp; AI graduate student from Kolkata</strong>, currently pursuing my M.Sc at RKMVERI after a B.Sc (Honours) in <strong class="text-ink">Mathematics</strong>. That math background is what I lean on most — it's why I care as much about <strong class="text-ink">why</strong> a model works as about getting it to run.
+                            </p>
+                            <p>
+                                I like taking what I learn in class — <strong class="text-ink">machine learning theory</strong>, <strong class="text-ink">statistical modeling</strong>, <strong class="text-ink">algorithms</strong> — and immediately testing it by building something with it. That habit has produced a growing set of independent projects and research work, from <strong class="text-ink">reinforcement learning environments</strong> and <strong class="text-ink">deep learning for sports analytics</strong> to a structured literature review on <strong class="text-ink">ML applications in mental health</strong>. I'm always looking for the next problem worth digging into.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 mt-8">
+                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Data Science</span>
+                            <span class="px-4 py-2 bg-accent-soft text-accent rounded-full text-sm font-medium">Machine Learning</span>
+                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Applied Mathematics</span>
+                            <span class="px-4 py-2 bg-accent-soft text-accent rounded-full text-sm font-medium">Statistical Models</span>
+                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Research</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 reveal">
+                        <div class="lg:sticky lg:top-24 space-y-4">
+                            <div class="card card-hover p-6 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-soft flex items-center justify-center text-xl shrink-0" aria-hidden="true">📍</div>
+                                <div>
+                                    <p class="text-sm text-ink-faint">Currently based in</p>
+                                    <p class="font-semibold text-ink">Kolkata, West Bengal, India</p>
+                                </div>
+                            </div>
+                            <div class="card card-hover p-6 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center text-xl shrink-0" aria-hidden="true">🎓</div>
+                                <div>
+                                    <p class="text-sm text-ink-faint">Now studying</p>
+                                    <p class="font-semibold text-ink">M.Sc Data Science &amp; AI, RKMVERI</p>
+                                </div>
+                            </div>
+                            <div class="card card-hover p-6 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-soft flex items-center justify-center text-xl shrink-0" aria-hidden="true">∫</div>
+                                <div>
+                                    <p class="text-sm text-ink-faint">Background</p>
+                                    <p class="font-semibold text-ink">B.Sc (Hons) Mathematics</p>
+                                </div>
+                            </div>
+                            <div class="card card-hover p-6 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center text-xl shrink-0" aria-hidden="true">λ</div>
+                                <div>
+                                    <p class="text-sm text-ink-faint">Open to</p>
+                                    <p class="font-semibold text-ink">Research, internships &amp; collaboration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Strengths -->
+        <section id="strengths" class="py-20 lg:py-28">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 02 ] · core strengths</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Not just code — the habits behind it</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="reveal card card-hover tilt p-7 text-center" data-delay="0">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-primary-soft flex items-center justify-center text-primary" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M4 7h3a1 1 0 0 0 1-1V2h3v4a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3h4v3h-4a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1h-3v4H8v-4a1 1 0 0 0-1-1H4a1 1 0 0 1-1-1v-3h4a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2">Problem Solving</h3>
+                        <p class="text-sm text-ink-soft leading-relaxed">Comfortable breaking down ambiguous problems into testable, structured steps.</p>
+                    </div>
+                    <div class="reveal card card-hover tilt p-7 text-center" data-delay="90">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-accent-soft flex items-center justify-center text-accent" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2">Fast Learner</h3>
+                        <p class="text-sm text-ink-soft leading-relaxed">Picked up Ray, Gymnasium, and GNNs independently to complete self-directed projects.</p>
+                    </div>
+                    <div class="reveal card card-hover tilt p-7 text-center" data-delay="180">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-primary-soft flex items-center justify-center text-primary" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2">Research Mindset</h3>
+                        <p class="text-sm text-ink-soft leading-relaxed">Trained in reading papers, designing experiments, and validating results rigorously.</p>
+                    </div>
+                    <div class="reveal card card-hover tilt p-7 text-center" data-delay="270">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-accent-soft flex items-center justify-center text-accent" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold mb-2">Team Ready</h3>
+                        <p class="text-sm text-ink-soft leading-relaxed">Used to collaborative academic projects and clear, documented, reviewable code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 03 ] · academic journey</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Education</h2>
+                    <p class="text-xl text-ink-soft">Building expertise through continuous learning</p>
+                </div>
+
+                <div class="relative">
+                    <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary via-accent to-primary opacity-40" aria-hidden="true"></div>
+
+                    <div class="space-y-12">
+                        <!-- M.Sc -->
+                        <div class="reveal relative">
+                            <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                                <div class="md:text-right md:pr-12">
+                                    <div class="card card-hover p-7 md:text-right">
+                                        <div class="flex items-start gap-4 md:flex-row-reverse">
+                                            <div class="w-14 h-14 shrink-0 rounded-2xl bg-primary-soft flex items-center justify-center text-2xl" aria-hidden="true">🎓</div>
+                                            <div class="text-left md:text-right flex-1">
+                                                <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 rounded-full text-xs font-semibold mb-3">CURRENT</span>
+                                                <h3 class="font-display text-2xl font-semibold mb-2">Master of Science in Data Science &amp; Artificial Intelligence</h3>
+                                                <p class="text-violet-300 mb-2">Ramakrishna Mission Vivekananda Educational and Research Institute (RKMVERI)</p>
+                                                <p class="font-mono text-sm text-ink-faint mb-3">📍 Belur Math, WB &nbsp;•&nbsp; 2025 - 2027</p>
+                                                <p class="text-sm text-ink-soft leading-relaxed">
+                                                    Specializing in advanced data science methodologies, artificial intelligence algorithms, and machine learning frameworks. Focus areas include deep learning, natural language processing, and big data analytics.
+                                                </p>
+                                                <div class="mt-4 pt-4 border-t border-white/10">
+                                                    <h4 class="text-sm font-semibold mb-2 text-violet-300">Focus Areas:</h4>
+                                                    <ul class="space-y-1.5 text-sm text-ink-soft">
+                                                        <li class="flex items-start gap-2 md:flex-row-reverse md:text-right">
+                                                            <span class="text-accent mt-0.5" aria-hidden="true">●</span>
+                                                            <span>Deep Learning &amp; Neural Networks</span>
+                                                        </li>
+                                                        <li class="flex items-start gap-2 md:flex-row-reverse md:text-right">
+                                                            <span class="text-accent mt-0.5" aria-hidden="true">●</span>
+                                                            <span>Machine Learning Algorithms &amp; Applications</span>
+                                                        </li>
+                                                        <li class="flex items-start gap-2 md:flex-row-reverse md:text-right">
+                                                            <span class="text-accent mt-0.5" aria-hidden="true">●</span>
+                                                            <span>Big Data Analytics &amp; Statistical Modeling</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex md:justify-end gap-2 mt-4 flex-wrap">
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Data Science</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Artificial Intelligence</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Deep Learning</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">ML Research</span>
+                                                    <span class="px-3 py-1 bg-white/5 text-ink-soft rounded-full text-xs font-medium">CGPA: 6.87 (Sem 1)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-base-2 shadow-glow z-10" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- B.Sc -->
+                        <div class="reveal relative">
+                            <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-base-2 shadow-glow z-10" aria-hidden="true"></div>
+                                <div class="md:col-start-2 md:pl-12">
+                                    <div class="card card-hover p-7">
+                                        <div class="flex items-start gap-4">
+                                            <div class="w-14 h-14 shrink-0 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl" aria-hidden="true">📚</div>
+                                            <div>
+                                                <span class="inline-block px-3 py-1 bg-sky-500/10 text-sky-300 border border-sky-500/30 rounded-full text-xs font-semibold mb-3">COMPLETED</span>
+                                                <h3 class="font-display text-2xl font-semibold mb-2">Bachelor of Science (Honours) in Mathematics</h3>
+                                                <p class="text-violet-300 mb-2">Ramakrishna Mission Vidyamandira, Belur</p>
+                                                <p class="font-mono text-sm text-ink-faint mb-3">📍 Belur Math, WB &nbsp;•&nbsp; 2022 - 2025 &nbsp;•&nbsp; CGPA: 6.91</p>
+                                                <div class="mt-4 pt-4 border-t border-white/10">
+                                                    <h4 class="text-sm font-semibold mb-2 text-ink">Key Highlights:</h4>
+                                                    <ul class="space-y-1.5 text-sm text-ink-soft">
+                                                        <li class="flex items-start gap-2">
+                                                            <span class="text-emerald-400 mt-0.5" aria-hidden="true">✓</span>
+                                                            <span>Research: <strong class="text-ink">Properties of Bessel Functions</strong> — recurrence relations, generating functions, orthogonality, and Fourier-Bessel expansions applied to Laplace's equation</span>
+                                                        </li>
+                                                        <li class="flex items-start gap-2">
+                                                            <span class="text-emerald-400 mt-0.5" aria-hidden="true">✓</span>
+                                                            <span>Coursework: Linear Algebra, Differential Equations, Numerical Analysis, Statistical Methods</span>
+                                                        </li>
+                                                        <li class="flex items-start gap-2">
+                                                            <span class="text-emerald-400 mt-0.5" aria-hidden="true">✓</span>
+                                                            <span>Developed strong foundation in applied mathematics and computational problem-solving</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex gap-2 mt-4 flex-wrap">
+                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Pure Mathematics</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Applied Math</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Research</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Higher Secondary -->
+                        <div class="reveal relative">
+                            <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                                <div class="md:text-right md:pr-12">
+                                    <div class="card card-hover p-7 md:text-right">
+                                        <div class="flex items-start gap-4 md:flex-row-reverse">
+                                            <div class="w-14 h-14 shrink-0 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl" aria-hidden="true">🏫</div>
+                                            <div class="text-left md:text-right flex-1">
+                                                <h3 class="font-display text-2xl font-semibold mb-2">Higher Secondary Education (Class XII)</h3>
+                                                <p class="text-violet-300 mb-2">Ramakrishna Mission Vidyalaya, Narendrapur</p>
+                                                <p class="font-mono text-sm text-ink-faint mb-3">2020 - 2022 &nbsp;•&nbsp; Science Stream</p>
+                                                <p class="text-sm text-ink-soft leading-relaxed">Focused on Mathematics, Physics, Chemistry, and Statistics. Built strong foundation in analytical thinking and problem-solving.</p>
+                                                <div class="flex md:justify-end gap-2 mt-4 flex-wrap">
+                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Science</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Mathematics</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white/40 rounded-full border-4 border-base-2 z-10" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- Madhyamik -->
+                        <div class="reveal relative">
+                            <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white/40 rounded-full border-4 border-base-2 z-10" aria-hidden="true"></div>
+                                <div class="md:col-start-2 md:pl-12">
+                                    <div class="card card-hover p-7">
+                                        <div class="flex items-start gap-4">
+                                            <div class="w-14 h-14 shrink-0 rounded-2xl bg-primary-soft flex items-center justify-center text-2xl" aria-hidden="true">📖</div>
+                                            <div>
+                                                <h3 class="font-display text-2xl font-semibold mb-2">Secondary Education (Class X)</h3>
+                                                <p class="text-violet-300 mb-2">Ramakrishna Mission Vidyalaya, Narendrapur</p>
+                                                <p class="font-mono text-sm text-ink-faint mb-3">2020</p>
+                                                <p class="text-sm text-ink-soft leading-relaxed">Completed secondary education with strong performance in mathematics and sciences. Foundation year for analytical and logical thinking development.</p>
+                                                <div class="flex gap-2 mt-4 flex-wrap">
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Secondary Education</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">WBBSE</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continuous Learning -->
+                <div class="mt-16 reveal">
+                    <div class="card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-primary-soft flex items-center justify-center text-2xl shrink-0" aria-hidden="true">📜</div>
+                            <div>
+                                <h3 class="font-display text-2xl font-semibold">Continuous Learning</h3>
+                                <p class="text-ink-soft">Self-taught skills and ongoing education</p>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-2xl" aria-hidden="true">🐍</span>
+                                    <h4 class="font-semibold">Python Programming</h4>
+                                </div>
+                                <p class="text-sm text-ink-soft">Advanced data structures, algorithms, and machine learning libraries including TensorFlow and PyTorch</p>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-2xl" aria-hidden="true">🤖</span>
+                                    <h4 class="font-semibold">Machine Learning &amp; AI</h4>
+                                </div>
+                                <p class="text-sm text-ink-soft">Reinforcement learning, neural networks, regression models, and deep learning frameworks</p>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-2xl" aria-hidden="true">⚛️</span>
+                                    <h4 class="font-semibold">Web Development</h4>
+                                </div>
+                                <p class="text-sm text-ink-soft">React, JavaScript, HTML/CSS, Tailwind, and modern frontend development practices</p>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-2xl" aria-hidden="true">📊</span>
+                                    <h4 class="font-semibold">Data Science</h4>
+                                </div>
+                                <p class="text-sm text-ink-soft">Statistical analysis, data visualization with Matplotlib, regression modeling, and exploratory analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="mt-8 reveal">
+                    <div class="card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl shrink-0" aria-hidden="true">🏆</div>
+                            <div>
+                                <h3 class="font-display text-2xl font-semibold">Achievements &amp; Recognition</h3>
+                                <p class="text-ink-soft">Competitions, scholarships, and qualifying exams</p>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5 flex items-start gap-3">
+                                <span class="text-2xl" aria-hidden="true">🥇</span>
+                                <div>
+                                    <h4 class="font-semibold">1st Place – Enigma Equation</h4>
+                                    <p class="text-sm text-ink-soft">Puzzle-solving event, Perceptron'25 college fest, RKMVERI</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5 flex items-start gap-3">
+                                <span class="text-2xl" aria-hidden="true">🥈</span>
+                                <div>
+                                    <h4 class="font-semibold">2nd Place – Poster Presentation</h4>
+                                    <p class="text-sm text-ink-soft">"Real Analysis and Its Applications," RKM Vidyamandira</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5 flex items-start gap-3">
+                                <span class="text-2xl" aria-hidden="true">🎓</span>
+                                <div>
+                                    <h4 class="font-semibold">JBNSTS Junior Scholarship</h4>
+                                    <p class="text-sm text-ink-soft">Awarded by the Government of West Bengal, 2020</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-5 flex items-start gap-3">
+                                <span class="text-2xl" aria-hidden="true">✅</span>
+                                <div>
+                                    <h4 class="font-semibold">CUET-PG 2025 (Mathematics)</h4>
+                                    <p class="text-sm text-ink-soft">Qualified the national-level postgraduate entrance exam</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section id="research" class="py-20 lg:py-28">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 04 ] · research experience</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Beyond the Classroom</h2>
+                    <p class="text-xl text-ink-soft">Literature review, statistical rigor, and cross-institution collaboration</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="reveal card card-hover tilt p-8" data-delay="0">
+                        <div class="w-14 h-14 rounded-2xl bg-primary-soft flex items-center justify-center text-2xl mb-5" aria-hidden="true">🧠</div>
+                        <h3 class="font-display text-2xl font-semibold mb-1">Statistical Methods &amp; Literature Review for ML in Mental Health</h3>
+                        <p class="font-mono text-sm text-violet-300 mb-3">RKMVERI · May 2026 – Jul 2026</p>
+                        <p class="text-ink-soft leading-relaxed">
+                            Structured study of statistical hypothesis testing, ANOVA, power analysis, sample size estimation, and non-parametric methods, paired with a literature review of machine learning applications in mental health. Reviewed psychometric validation studies and presented technical findings through academic seminars.
+                        </p>
+                    </div>
+                    <div class="reveal card card-hover tilt p-8" data-delay="120">
+                        <div class="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl mb-5" aria-hidden="true">📖</div>
+                        <h3 class="font-display text-2xl font-semibold mb-1">Computational Analysis of Comic Narrative Flow</h3>
+                        <p class="font-mono text-sm text-violet-300 mb-3">Flame University · May 2026 – Present</p>
+                        <p class="text-ink-soft leading-relaxed">
+                            Literature review on computational comic understanding, studying ML approaches for modeling narrative flow — emotion recognition, panel transition understanding, multimodal reasoning, and context inference — to identify open research directions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 05 ] · portfolio</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Featured Projects</h2>
+                    <p class="text-xl text-ink-soft">Academic research and self-directed builds, from math to machine learning</p>
+                </div>
+
+                <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="py-20 lg:py-28">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 06 ] · expertise</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Skills &amp; Technologies</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="reveal space-y-7">
+                        <div>
+                            <div class="flex justify-between mb-2.5">
+                                <span class="font-semibold text-ink">Python &amp; Machine Learning</span>
+                                <span class="font-mono text-primary">90%</span>
+                            </div>
+                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
+                                <div class="skill-fill h-full rounded-full" data-level="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Python and Machine Learning"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2.5">
+                                <span class="font-semibold text-ink">Mathematics &amp; Statistics</span>
+                                <span class="font-mono text-primary">95%</span>
+                            </div>
+                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
+                                <div class="skill-fill h-full rounded-full" data-level="95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Mathematics and Statistics"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2.5">
+                                <span class="font-semibold text-ink">Deep Learning (PyTorch)</span>
+                                <span class="font-mono text-primary">82%</span>
+                            </div>
+                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
+                                <div class="skill-fill h-full rounded-full" data-level="82" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Deep Learning"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2.5">
+                                <span class="font-semibold text-ink">Web Development (React/JS)</span>
+                                <span class="font-mono text-primary">80%</span>
+                            </div>
+                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
+                                <div class="skill-fill h-full rounded-full" data-level="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Web Development"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal">
+                        <ul class="grid grid-cols-3 sm:grid-cols-4 gap-3" id="techGrid"></ul>
+                    </div>
+                </div>
+
+                <div class="reveal marquee mt-16" aria-label="Technologies">
+                    <ul class="marquee-track" id="marqueeTrack"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Completed Courses -->
+        <section id="courses" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 07 ] · coursework</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Completed Courses</h2>
+                    <p class="text-xl text-ink-soft">Formal coursework that built the foundations</p>
+                </div>
+
+                <div id="coursesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="py-20 lg:py-28">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 08 ] · credentials</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Certifications</h2>
+                    <p class="text-xl text-ink-soft">Verified credentials from recognised programs</p>
+                </div>
+
+                <div id="certificationsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- Now Building -->
+        <section id="now" class="py-20 lg:py-28">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 09 ] · studying</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Currently Studying</h2>
+                    <p class="text-xl text-ink-soft">The subjects and topics I'm going through right now</p>
+                </div>
+
+                <div id="nowBuildingGrid" class="grid sm:grid-cols-2 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- Hobbies -->
+        <section id="hobbies" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 10 ] · beyond the code</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Beyond the Code</h2>
+                    <p class="text-xl text-ink-soft">What keeps the balance interesting</p>
+                </div>
+
+                <div id="hobbiesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-20 lg:py-28 bg-base-2 border-y border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-14 reveal">
+                    <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 11 ] · get in touch</p>
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Let's Connect</h2>
+                    <p class="text-xl text-ink-soft">Interested in my work, or want to collaborate on something interesting? I'd love to hear from you.</p>
+                </div>
+
+                <div class="card p-8 reveal shadow-lift">
+                    <form action="https://formspree.io/f/mldprpbb" method="POST" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                                <input id="name" type="text" name="name" required
+                                    class="w-full px-4 py-3 bg-base/60 border border-white/10 rounded-xl focus:border-primary text-ink transition placeholder:text-ink-faint">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                <input id="email" type="email" name="email" required
+                                    class="w-full px-4 py-3 bg-base/60 border border-white/10 rounded-xl focus:border-primary text-ink transition placeholder:text-ink-faint">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" required rows="5"
+                                class="w-full px-4 py-3 bg-base/60 border border-white/10 rounded-xl focus:border-primary text-ink transition resize-none placeholder:text-ink-faint"></textarea>
+                        </div>
+                        <button type="submit" class="btn-shine w-full py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-deep hover:shadow-[0_0_24px_rgba(168,85,247,0.4)] shadow-soft transition">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <div class="grid md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
+                        <a href="mailto:arka8868@gmail.com" class="flex items-center justify-center gap-2 px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl hover:border-primary hover:shadow-soft transition font-medium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>Email</span>
+                        </a>
+                        <a href="tel:+917029281649" class="flex items-center justify-center gap-2 px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl hover:border-accent hover:shadow-soft transition font-medium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>Call</span>
+                        </a>
+                    </div>
+
+                    <div data-social="github,linkedin" class="flex items-center justify-center gap-3 mt-5"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center space-y-2">
+            <p class="font-display text-lg font-semibold text-primary">Ananyo Sen<span class="text-accent">.</span></p>
+            <p class="font-mono text-sm text-ink-faint">&copy; <span id="year"></span> Ananyo Sen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
