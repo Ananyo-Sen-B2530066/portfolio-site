@@ -12,10 +12,12 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#08080f">
 
-    <!-- Plausible Analytics
-         Note: this only sends data once you create a free account at https://plausible.io
-         and add the site domain exactly as it appears below (or your custom domain). -->
-    <script defer data-domain="ananyosenportfolio.netlify.app" src="https://plausible.io/js/script.js"></script>
+    <!-- Cloudflare Web Analytics
+         Note: replace YOUR_CF_ANALYTICS_TOKEN below with your real beacon token from
+         https://dash.cloudflare.com/ → Analytics & Logs → Web Analytics → Add a site.
+         The beacon works on Netlify via Beacon Mode without moving DNS. -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
