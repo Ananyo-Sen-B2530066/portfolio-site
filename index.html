@@ -12,10 +12,12 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#08080f">
 
-    <!-- Plausible Analytics
-         Note: this only sends data once you create a free account at https://plausible.io
-         and add the site domain exactly as it appears below (or your custom domain). -->
-    <script defer data-domain="ananyosenportfolio.netlify.app" src="https://plausible.io/js/script.js"></script>
+    <!-- Cloudflare Web Analytics
+         Note: replace YOUR_CF_ANALYTICS_TOKEN below with your real beacon token from
+         https://dash.cloudflare.com/ → Analytics & Logs → Web Analytics → Add a site.
+         The beacon works on Netlify via Beacon Mode without moving DNS. -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
@@ -172,7 +174,7 @@
 
                     <dl class="grid grid-cols-3 gap-4 max-w-lg">
                         <div class="card p-5">
-                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="7">0</dd>
+                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="8">0</dd>
                             <dt class="text-sm text-ink-soft mt-1.5">Projects Built</dt>
                         </div>
                         <div class="card p-5">
@@ -373,7 +375,7 @@
                                                     <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Artificial Intelligence</span>
                                                     <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Deep Learning</span>
                                                     <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">ML Research</span>
-                                                    <span class="px-3 py-1 bg-white/5 text-ink-soft rounded-full text-xs font-medium">CGPA: 6.87 (Sem 1)</span>
+                                                    <span class="px-3 py-1 bg-white/5 text-ink-soft rounded-full text-xs font-medium">CGPA: 6.65 (Sem 2)</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -575,19 +577,29 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="reveal card card-hover tilt p-8" data-delay="0">
                         <div class="w-14 h-14 rounded-2xl bg-primary-soft flex items-center justify-center text-2xl mb-5" aria-hidden="true">🧠</div>
-                        <h3 class="font-display text-2xl font-semibold mb-1">Statistical Methods &amp; Literature Review for ML in Mental Health</h3>
-                        <p class="font-mono text-sm text-violet-300 mb-3">RKMVERI · May 2026 – Jul 2026</p>
-                        <p class="text-ink-soft leading-relaxed">
-                            Structured study of statistical hypothesis testing, ANOVA, power analysis, sample size estimation, and non-parametric methods, paired with a literature review of machine learning applications in mental health. Reviewed psychometric validation studies and presented technical findings through academic seminars.
+                        <h3 class="font-display text-2xl font-semibold mb-1">Statistical Methods &amp; Literature Review for Various Scales and Application in Mental Health</h3>
+                        <p class="font-mono text-sm text-violet-300 mb-3">RKMVERI · Jan 2026 – Jul 2026</p>
+                        <p class="text-ink-soft leading-relaxed mb-4">
+                            Structured study of statistical hypothesis testing, ANOVA, power analysis, sample size estimation, and non-parametric methods, paired with a literature review of machine learning applications in mental health, including a comparative study of various psychometric scales and their validation studies.
                         </p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="research-progress-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-deep transition text-sm font-medium">Research Progress Report →</a>
+                        </div>
                     </div>
                     <div class="reveal card card-hover tilt p-8" data-delay="120">
-                        <div class="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl mb-5" aria-hidden="true">📖</div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl shrink-0" aria-hidden="true">📖</div>
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30">Internship</span>
+                        </div>
                         <h3 class="font-display text-2xl font-semibold mb-1">Computational Analysis of Comic Narrative Flow</h3>
-                        <p class="font-mono text-sm text-violet-300 mb-3">Flame University · May 2026 – Present</p>
-                        <p class="text-ink-soft leading-relaxed">
-                            Literature review on computational comic understanding, studying ML approaches for modeling narrative flow — emotion recognition, panel transition understanding, multimodal reasoning, and context inference — to identify open research directions.
+                        <p class="font-mono text-sm text-violet-300 mb-3">Flame University · May 2026 – Sep 2026</p>
+                        <p class="text-ink-soft leading-relaxed mb-4">
+                            Summer internship on computational comic understanding — studying ML approaches for modeling narrative flow, including emotion recognition, panel transition understanding, multimodal reasoning, and context inference, to identify open research directions. Completed and officially recognized via a completion letterhead.
                         </p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="flame-internship-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-deep transition text-sm font-medium">Internship Report →</a>
+                            <a href="flame-completion-letter.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-ink/5 text-ink rounded-lg hover:bg-ink/10 transition text-sm font-medium">Completion Letter →</a>
+                        </div>
                     </div>
                 </div>
             </div>

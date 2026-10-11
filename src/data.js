@@ -42,6 +42,7 @@ export const projects = [
     tags: ['RL', 'TensorFlow', 'PyTorch'],
     gradient: 'from-violet-500/30 to-pink-500/30',
     icon: '🎯',
+    group: true,
     period: 'Oct 2025 – Dec 2025',
     viewUrl: 'projects/treasure_hunt.pdf',
     github: 'https://github.com/Ananyo-Sen-B2530066/TreasureHunt-RL.git', 
@@ -80,6 +81,7 @@ export const projects = [
     tags: ['Python', 'Ray', 'Flask', 'ML', 'Distributed'],
     gradient: 'from-cyan-500/25 to-blue-500/25',
     icon: '🕹️',
+    group: true,
     period: 'Feb 2026 – May 2026',
     viewUrl: 'projects/distributed_gaming_analytics.pdf',
     github: 'https://github.com/Ananyo-Sen-B2530066/distributed-gaming-analytics.git',
@@ -95,6 +97,18 @@ export const projects = [
     period: 'Feb 2026 – Apr 2026',
     viewUrl: 'projects/sports_video_analysis.pdf',
     github: 'https://github.com/Ananyo-Sen-B2530066/DL-Video-Analysis.git',
+  },
+  {
+    id: 'rotom-dex',
+    image: 'projects/rotom-dex.png',
+    name: 'Rotom-Dex Pokédex',
+    description: 'A handheld-style Pokédex web app, built around the Rotom-Dex from Pokémon Sun & Moon.',
+    tags: ['HTML', 'JavaScript', 'TypeScript'],
+    gradient: 'from-yellow-500/25 to-amber-500/25',
+    icon: '🔴',
+    period: 'Personal Project',
+    viewLink: 'https://rotom-dex-pokedex.netlify.app/',
+    github: 'https://github.com/Ananyo-Sen-B2530066/pokedex.git', 
   },
 ]
 
@@ -115,7 +129,7 @@ export const techStack = [
 
 export const MARQUEE_TECH = [
   'Python', 'PyTorch', 'React', 'Scikit-Learn', 'TensorFlow', 'Ray',
-  'Flask', 'R', 'C++', 'Git', 'Linux', 'Windows', 'macOS', 'Gymnasium', 'Streamlit', 'JavaScript',
+  'Flask', 'R', 'C++', 'Git', 'Linux', 'Windows', 'macOS', 'Gymnasium', 'Streamlit', 'JavaScript', 'TypeScript',
 ]
 
 export const nowBuilding = [
@@ -137,12 +151,17 @@ export const nowBuilding = [
   {
     topic: 'Econometrics',
     label: 'learning',
-    note: 'Exploring the basic of Econometrics, focused on applying statistical and regression techniques to model economic relationships, test hypotheses, and derive data-driven insights.',
+    note: 'Exploring the basics of Econometrics, focused on applying statistical and regression techniques to model economic relationships, test hypotheses, and derive data-driven insights.',
   },
   {
     topic: 'Finance',
     label: 'learning',
     note: 'Currently exploring Quantitative Finance, focusing on portfolio theory, no-arbitrage principles, stochastic processes, derivatives, option pricing models, implied volatility, and numerical pricing techniques.',
+  },
+  {
+    topic: 'Advanced Deep Learning & Cyber Security',
+    label: 'exploring',
+    note: 'Currently exploring the world of LLMs and AI systems, extending my understanding of RAG, chunking, entity relationships, state machines/statecharts, and jailbreak detection and defense.',
   },
 ]
 
@@ -200,22 +219,39 @@ export const certifications = [
 
 // Current amount of work done on projects you're actively building.
 // This section auto-hides when the array is empty.
-//   status: 'building' (green) | 'learning' (sky) | 'exploring' (violet)
-//   link:   optional — button only appears if you include it (set to '' to hide)
+//   name:    the project's actual name (title). Leave '' to show only `project`.
+//   project: what the project is related to (shown below the title)
+//   status:  'building' (green) | 'learning' (sky) | 'exploring' (violet)
+//   group:   set true for group projects (renders a badge)
+//.  update:  progress of the work related to this projects
+//.  date:    last date of updating the update data
+//   link:    optional — button only appears if you include it (set to '' to hide)
 export const activeWork = [
   {
+    name: 'Project EPIONE',
     project: 'Advanced Deep Learning',
     status: 'building',
-    update: 'Going through the dataset and past reports related to the project',
-    date: 'Aug 2026',
-    link: '', // [FILL IN] GitHub or live URL, or leave '' to hide the button
+    group: true,
+    update: 'EDA in progress, then the main part of the project will begin',
+    date: 'Oct 2026',
+    link: 'https://github.com/Ananyo-Sen-B2530066/project-epione.git',
   },
-  {
+{
+    name: 'Brain Activity and Learning Improvement in Children with Learning Difficulties',
     project: 'M.Sc. Term Project',
     status: 'building',
-    update: 'Analysing the Dataset to build the required statistical model and train ML model',
-    date: 'Aug 2026',
-    link: '', // [FILL IN] GitHub or live URL, or leave '' to hide the button
+    update: 'Studying the EEG data, EEG Features among the participants begin the comparison study',
+    date: 'Oct 2026',
+    link: 'https://github.com/Ananyo-Sen-B2530066/mental-health.git', 
+  },
+{
+    name: 'Random Walk vs Brownian Motion vs Real Stock Markets',
+    project: 'Finance',
+    status: 'building',
+    group: true,
+    update: 'Dataset is collected to preprocess and clean.',
+    date: 'Oct 2026',
+    link: '', 
   },
 ]
 

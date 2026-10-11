@@ -15,7 +15,7 @@ Personal portfolio of **Ananyo Sen**, a Data Science & AI student at RKMVERI. Bu
 - Animated skill bars, marquee tech strip, and scroll-reveal sections
 - Itinerary of projects, fests (used live at Perceptron), coursework, certifications, courses-in-progress, and hobbies
 - `activeWork` section — a live "currently building / learning" tracker renderer (auto-hides when empty)
-- Plausible analytics (`data-domain="ananyosenportfolio.netlify.app"`)
+- Cloudflare Web Analytics (free; replace `YOUR_CF_ANALYTICS_TOKEN` in `index.html` after creating the site)
 - SEO: meta tags, Open Graph / Twitter cards, `sitemap.xml`, `robots.txt`, Google site verification
 
 ## Local Development

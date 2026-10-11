@@ -36,7 +36,8 @@ function loadProjects() {
   grid.innerHTML = projects
     .map(
       (project, index) => `
-      <article class="reveal card card-hover tilt p-6 flex flex-col" data-delay="${(index % 3) * 90}">
+      <article class="reveal card card-hover tilt card-accent p-6 flex flex-col" data-delay="${(index % 3) * 90}">
+        ${project.group ? `<span class="badge-on-border inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
         <div class="relative h-36 bg-gradient-to-br ${project.gradient} rounded-xl mb-5 overflow-hidden border border-white/10">
           ${project.image ? `<img src="${project.image}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">` : ''}
         </div>
@@ -79,11 +80,13 @@ function loadActiveWork() {
   const grid = activeWork
     .map(
       (item, i) => `
-      <div class="reveal rounded-2xl p-6 bg-white/[0.03] border border-white/10 hover:border-white/20 transition flex flex-col" data-delay="${(i % 2) * 100}">
-        <div class="flex items-center justify-between gap-3 mb-3">
-          <h3 class="font-display text-xl font-semibold">${item.project}</h3>
-          <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border whitespace-nowrap ${ACTIVE_STATUS_STYLES[item.status] || ACTIVE_STATUS_STYLES.exploring}">${item.status}</span>
+      <div class="reveal rounded-2xl p-6 bg-white/[0.03] border border-white/10 hover:border-white/20 transition flex flex-col card-accent" data-delay="${(i % 2) * 100}">
+        ${item.group ? `<span class="badge-on-border inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <h3 class="font-display text-xl font-semibold">${item.name || item.project}</h3>
+          <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border whitespace-nowrap shrink-0 ${ACTIVE_STATUS_STYLES[item.status] || ACTIVE_STATUS_STYLES.exploring}">${item.status}</span>
         </div>
+        ${item.name && item.project && item.name !== item.project ? `<p class="text-primary-deep text-xs mb-2">${item.project}</p>` : ''}
         <p class="text-sm text-ink-soft leading-relaxed flex-1">${item.update}</p>
         <div class="flex items-center justify-between gap-3 mt-4 pt-4 border-t border-white/10">
           <span class="font-mono text-sm text-ink-faint">${item.date}</span>
@@ -185,13 +188,15 @@ function observeReveals(nodes) {
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]')
   const navLinks = document.querySelectorAll('.nav-link')
+  const sectionToNav = { 'active-work': '#projects' }
 
   const spyObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
+        const target = sectionToNav[entry.target.id] || `#${entry.target.id}`
         navLinks.forEach((link) => {
-          const active = link.getAttribute('href') === `#${entry.target.id}`
+          const active = link.getAttribute('href') === target
           link.classList.toggle('text-ink', active)
           link.classList.toggle('text-ink-soft', !active)
           if (active) link.setAttribute('aria-current', 'true')
@@ -410,7 +415,7 @@ const TERMINAL_LINES = [
   ],
   [
     { t: '→ ', c: 'tok-prom' },
-    { t: '7 projects · 12 technologies · building what I learn', c: 'tok-dim' },
+    { t: '8 projects · 12 technologies · building what I learn', c: 'tok-dim' },
   ],
 ]
 
