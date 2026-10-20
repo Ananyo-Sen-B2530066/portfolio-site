@@ -253,6 +253,15 @@ export const activeWork = [
     date: 'Oct 2026',
     link: '', 
   },
+{
+    name: 'SHARP: Structural Heterogeneity Analysis and Regime Point-detection',
+    project: 'Econometrics',
+    status: 'building',
+    group: true,
+    update: 'Literature Review in Progress.',
+    date: 'Oct 2026',
+    link: '', 
+  },
 ]
 
 export const hobbies = [
