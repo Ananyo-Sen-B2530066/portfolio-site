@@ -215,6 +215,12 @@ export const certifications = [
     year: '2025',
     image: 'certificates/nptel-cpp.png',
   },
+  {
+    name: 'NPTEL — Generative AI for Computer Vision',
+    issuer: 'NPTEL, Government of India',
+    year: '2026',
+    image: 'certificates/nptel-gen_ai-cv.png',
+  },
 ]
 
 // Current amount of work done on projects you're actively building.
