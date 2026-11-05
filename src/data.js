@@ -260,13 +260,13 @@ export const activeWork = [
     link: '', 
   },
 {
-    name: 'SHARP: Structural Heterogeneity Analysis and Regime Point-detection',
+    name: 'TRACE: Temporal Regime Analysis and Changepoint Estimation',
     project: 'Econometrics',
     status: 'building',
     group: true,
-    update: 'Literature Review in Progress.',
+    update: 'Practical Work of the project is done. Theoretical Part analysis and report building in progress.',
     date: 'Oct 2026',
-    link: '', 
+    link: 'https://github.com/Ananyo-Sen-B2530066/econometrics-structural-breaks', 
   },
 ]
 
