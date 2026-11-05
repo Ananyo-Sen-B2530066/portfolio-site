@@ -265,7 +265,7 @@ export const activeWork = [
     status: 'building',
     group: true,
     update: 'Practical Work of the project is done. Theoretical Part analysis and report building in progress.',
-    date: 'Oct 2026',
+    date: 'Nov 2026',
     link: 'https://github.com/Ananyo-Sen-B2530066/econometrics-structural-breaks', 
   },
 ]
