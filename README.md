@@ -12,11 +12,15 @@ Personal portfolio of **Ananyo Sen**, a Data Science & AI student at RKMVERI. Bu
 ## Features
 
 - Dark, responsive, single-page layout
-- Animated skill bars, marquee tech strip, and scroll-reveal sections
+- Interactive skills explorer — filter by category, tap a skill for a live detail panel
+- Zoom project cards — click any card to zoom into a scrollable deep-dive (problem → approach → real results for academic work, "idea → build" story for personal projects), with stack, role, and links
+- Project filters — show all, academic projects only, or personal builds, with live counts
+- Marquee tech strip and scroll-reveal sections
 - Itinerary of projects, fests (used live at Perceptron), coursework, certifications, courses-in-progress, and hobbies
 - `activeWork` section — a live "currently building / learning" tracker renderer (auto-hides when empty)
-- Cloudflare Web Analytics (free; replace `YOUR_CF_ANALYTICS_TOKEN` in `index.html` after creating the site)
-- SEO: meta tags, Open Graph / Twitter cards, `sitemap.xml`, `robots.txt`, Google site verification
+- Contact form with inline success/error feedback (Formspree) and a spam honeypot
+- Cloudflare Web Analytics (beacon token configured in `index.html`)
+- SEO: meta tags, Open Graph / Twitter cards, Person + WebSite JSON-LD, `sitemap.xml`, `robots.txt`, Google site verification
 
 ## Local Development
 
@@ -50,8 +54,8 @@ After importing the repo, keep the site name as **`ananyosenportfolio`** (Site s
 
 ## Content & Customisation
 
-- All content lives in `src/data.js` — projects, tech stack, courses, certifications, hobbies, `activeWork`, social links.
-- Static sections (hero, skills, layout, meta tags, Plausible script) live in `index.html`.
+- All content lives in `src/data.js` — projects, skills, courses, certifications, hobbies, `activeWork`, social links.
+- Static sections (hero, layout, meta tags, analytics script) live in `index.html`.
 - Rendering logic lives in `src/main.js`.
 - Static assets (profile image, CV, certificates, `og-banner.png`, favicon) live in `public/`.
 - `activeWork` entries: fill in the `update`, `date`, and `link` fields in `src/data.js`. Cards render a link button only when `link` is present.

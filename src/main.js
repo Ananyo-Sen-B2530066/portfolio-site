@@ -1,7 +1,8 @@
 import './style.css'
 import {
   projects,
-  techStack,
+  skills,
+  skillCategories,
   MARQUEE_TECH,
   social,
   nowBuilding,
@@ -27,6 +28,228 @@ const TECH_ICONS = {
   terminal: '<polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line>',
   monitor: '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
   apple: '<path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06z"></path>',
+  database: '<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"></path>',
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle>',
+  sparkles: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"></path>',
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+function caseStudyViewerMarkup(project) {
+  const study = project.caseStudy
+  const isWeb = study.kind === 'web'
+  const sections = isWeb
+    ? { problem: '01 · The idea', approach: '02 · How it\'s built', results: '03 · What it does', discussion: '04 · Notes' }
+    : { problem: '01 · The problem', approach: '02 · Approach', results: '03 · Results', discussion: '04 · Discussion' }
+  const links = [
+    project.viewUrl
+      ? `<a href="${project.viewUrl}" target="_blank" rel="noopener" class="px-4 py-2 bg-primary-deep text-white rounded-lg hover:bg-primary transition text-sm font-medium">${project.viewUrl.endsWith('.pdf') ? 'Read Report' : 'View Project'} →</a>`
+      : '',
+    project.viewLink ? `<a href="${project.viewLink}" target="_blank" rel="noopener" class="px-4 py-2 bg-ink/5 text-ink rounded-lg hover:bg-ink/10 transition text-sm font-medium">Live Demo →</a>` : '',
+    project.github && project.github !== '[EDIT]'
+      ? `<a href="${project.github}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 border border-white/15 text-ink rounded-lg hover:border-accent hover:text-accent transition text-sm font-medium"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">${GITHUB_ICON}</svg><span>Code</span></a>`
+      : '',
+  ]
+    .filter(Boolean)
+    .join('')
+
+  return `
+  <div class="project-viewer-hero">
+    ${project.image ? `<img class="project-viewer-image" src="${project.image}" alt="${escapeHtml(project.name)}" onerror="this.style.display='none'">` : `<div class="project-viewer-image-fallback ${project.gradient}" aria-hidden="true">${project.icon || ''}</div>`}
+    <p class="project-viewer-period">${escapeHtml(project.period)}${project.group ? ' · 👥 Group project' : ''}${project.fest ? ' · 🎪 ' + escapeHtml(project.fest) : ''}</p>
+    <h3 id="projectViewerTitle" class="project-viewer-title">${escapeHtml(project.name)}</h3>
+    <p class="project-viewer-tagline">${escapeHtml(study.tagline || '')}</p>
+    <div class="flex flex-wrap gap-2 mt-3">
+      ${project.tags.map((tag) => `<span class="px-3 py-1 bg-ink/5 rounded-full text-xs font-medium text-ink-soft">${escapeHtml(tag)}</span>`).join('')}
+    </div>
+    ${links ? `<div class="flex flex-wrap gap-2 mt-4">${links}</div>` : ''}
+  </div>
+  <section class="project-viewer-section" id="pv-problem" aria-label="${isWeb ? 'The idea' : 'The problem'}">
+    <p class="project-viewer-eyebrow">${sections.problem}</p>
+    <p class="project-viewer-body">${escapeHtml(study.problem || '')}</p>
+  </section>
+  <section class="project-viewer-section" id="pv-approach" aria-label="${isWeb ? 'How it\'s built' : 'Approach'}">
+    <p class="project-viewer-eyebrow">${sections.approach}</p>
+    <ol class="project-viewer-steps">
+      ${(study.approach || []).map((step) => `<li><span class="project-viewer-step-no" aria-hidden="true"></span><span>${escapeHtml(step)}</span></li>`).join('')}
+    </ol>
+  </section>
+  <section class="project-viewer-section" id="pv-results" aria-label="${isWeb ? 'What it does' : 'Results'}">
+    <p class="project-viewer-eyebrow">${sections.results}</p>
+    <div class="project-viewer-metrics">
+      ${(study.metrics || []).map((metric) => `<div class="project-viewer-metric"><p class="project-viewer-metric-value">${escapeHtml(metric.value)}</p><p class="project-viewer-metric-label">${escapeHtml(metric.label)}</p></div>`).join('')}
+    </div>
+    <ul class="project-viewer-findings">
+      ${(study.findings || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+    </ul>
+  </section>
+  <section class="project-viewer-section" id="pv-discussion" aria-label="${isWeb ? 'Notes' : 'Discussion'}">
+    <p class="project-viewer-eyebrow">${sections.discussion}</p>
+    <p class="project-viewer-body">${escapeHtml(study.discussion || '')}</p>
+    <div class="project-viewer-meta">
+      ${study.role ? `<p class="project-meta-row"><span class="project-meta-key">Role</span><span>${escapeHtml(study.role)}</span></p>` : ''}
+      <p class="project-meta-row"><span class="project-meta-key">Stack</span><span>${project.tags.map(escapeHtml).join(' · ')}</span></p>
+    </div>
+  </section>`
+}
+
+let projectViewer = null
+let projectViewerScroll = null
+let projectViewerProgress = null
+let lastViewerTrigger = null
+let lastViewerCardRect = null
+
+function ensureProjectViewer() {
+  if (projectViewer) return
+  projectViewer = document.createElement('div')
+  projectViewer.id = 'projectViewer'
+  projectViewer.className = 'project-viewer'
+  projectViewer.hidden = true
+  projectViewer.setAttribute('role', 'dialog')
+  projectViewer.setAttribute('aria-modal', 'true')
+  projectViewer.setAttribute('aria-labelledby', 'projectViewerTitle')
+  projectViewer.innerHTML = `
+    <div class="project-viewer-backdrop" data-close aria-hidden="true"></div>
+    <div class="project-viewer-panel">
+      <div class="project-viewer-progress" aria-hidden="true"><span id="projectViewerProgressBar"></span></div>
+      <div class="project-viewer-topbar">
+        <nav class="project-viewer-chapters" aria-label="Project sections">
+          <button type="button" data-goto="pv-problem" data-label-research="Problem" data-label-web="Idea">Problem</button>
+          <button type="button" data-goto="pv-approach" data-label-research="Approach" data-label-web="Built">Approach</button>
+          <button type="button" data-goto="pv-results" data-label-research="Results" data-label-web="Does">Results</button>
+          <button type="button" data-goto="pv-discussion" data-label-research="Discussion" data-label-web="Notes">Discussion</button>
+        </nav>
+        <button type="button" class="project-viewer-close" data-close aria-label="Close project view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <span>Close</span>
+        </button>
+      </div>
+      <div class="project-viewer-scroll" tabindex="0" aria-label="Project scroll region"></div>
+    </div>`
+  document.body.appendChild(projectViewer)
+  projectViewerScroll = projectViewer.querySelector('.project-viewer-scroll')
+  projectViewerProgress = projectViewer.querySelector('#projectViewerProgressBar')
+  projectViewer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-close]')) closeProjectViewer()
+  })
+  projectViewer.querySelectorAll('[data-goto]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = projectViewerScroll.querySelector(`#${button.dataset.goto}`)
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  })
+  projectViewerScroll.addEventListener('scroll', () => {
+    const max = projectViewerScroll.scrollHeight - projectViewerScroll.clientHeight
+    if (projectViewerProgress) projectViewerProgress.style.transform = `scaleX(${max > 0 ? projectViewerScroll.scrollTop / max : 0})`
+  }, { passive: true })
+  document.addEventListener('keydown', (event) => {
+    if (projectViewer.hidden) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      closeProjectViewer()
+      return
+    }
+    if (event.key !== 'Tab') return
+    const items = [...projectViewer.querySelectorAll('button, a[href]')].filter((el) => el.getClientRects().length > 0)
+    if (!items.length) return
+    const first = items[0]
+    const last = items[items.length - 1]
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
+  })
+}
+
+function openProjectViewer(project, trigger) {
+  ensureProjectViewer()
+  lastViewerTrigger = trigger || null
+  const card = trigger ? trigger.closest('.project-card') : null
+  lastViewerCardRect = card ? card.getBoundingClientRect() : null
+  projectViewerScroll.innerHTML = caseStudyViewerMarkup(project)
+  projectViewerScroll.scrollTop = 0
+  const isWeb = project.caseStudy?.kind === 'web'
+  projectViewer.querySelectorAll('[data-goto]').forEach((button) => {
+    button.textContent = isWeb ? button.dataset.labelWeb : button.dataset.labelResearch
+  })
+  projectViewer.hidden = false
+  document.body.style.overflow = 'hidden'
+  projectViewerScroll.focus({ preventScroll: true })
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const panel = projectViewer.querySelector('.project-viewer-panel')
+  if (!reduceMotion && lastViewerCardRect) {
+    const r = lastViewerCardRect
+    const cx = r.left + r.width / 2
+    const cy = r.top + r.height / 2
+    const vw = window.innerWidth / 2
+    const vh = window.innerHeight / 2
+    const scale = Math.max(0.55, Math.min(0.85, r.width / Math.min(window.innerWidth * 0.94, 860)))
+    panel.style.transform = `translate(${cx - vw}px, ${cy - vh}px) scale(${scale})`
+    panel.style.opacity = '0'
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        panel.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease'
+        panel.style.transform = ''
+        panel.style.opacity = ''
+        setTimeout(() => { panel.style.transition = '' }, 520)
+      })
+    })
+  }
+  document.body.classList.add('viewer-open')
+}
+
+function closeProjectViewer() {
+  if (!projectViewer || projectViewer.hidden) return
+  const panel = projectViewer.querySelector('.project-viewer-panel')
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const finish = () => {
+    projectViewer.hidden = true
+    document.body.style.overflow = ''
+    document.body.classList.remove('viewer-open')
+    panel.style.transition = ''
+    panel.style.transform = ''
+    panel.style.opacity = ''
+    if (lastViewerTrigger instanceof HTMLElement) lastViewerTrigger.focus()
+    lastViewerTrigger = null
+    lastViewerCardRect = null
+  }
+  if (reduceMotion || !lastViewerCardRect) {
+    finish()
+    return
+  }
+  const r = lastViewerCardRect
+  const cx = r.left + r.width / 2
+  const cy = r.top + r.height / 2
+  const vw = window.innerWidth / 2
+  const vh = window.innerHeight / 2
+  const scale = Math.max(0.55, Math.min(0.85, r.width / Math.min(window.innerWidth * 0.94, 860)))
+  panel.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease'
+  panel.style.transform = `translate(${cx - vw}px, ${cy - vh}px) scale(${scale})`
+  panel.style.opacity = '0'
+  setTimeout(finish, 420)
+}
+
+function initProjectToggles(grid) {
+  grid.addEventListener('click', (event) => {
+    if (event.target.closest('a')) return
+    const toggle = event.target.closest('.project-toggle')
+    if (toggle) {
+      const card = toggle.closest('.project-card')
+      const project = projects.find((p) => p.id === card?.dataset.project)
+      if (project) openProjectViewer(project, toggle)
+      return
+    }
+    // Clicking anywhere else on the card zooms in too.
+    const card = event.target.closest('.project-card')
+    if (!card) return
+    const project = projects.find((p) => p.id === card.dataset.project)
+    if (project) openProjectViewer(project, card.querySelector('.project-toggle') || card)
+  })
 }
 
 function loadProjects() {
@@ -36,10 +259,10 @@ function loadProjects() {
   grid.innerHTML = projects
     .map(
       (project, index) => `
-      <article class="reveal card card-hover tilt card-accent p-6 flex flex-col" data-delay="${(index % 3) * 90}">
-        ${project.group ? `<span class="badge-on-border inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
+      <article class="reveal card card-hover tilt card-accent project-card p-6 flex flex-col" data-project="${project.id}" data-kind="${project.caseStudy?.kind || 'research'}" data-delay="${(index % 3) * 90}">
+        ${project.group ? `<span class="badge-on-border inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-[#f9a8d4] border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
         <div class="relative h-36 bg-gradient-to-br ${project.gradient} rounded-xl mb-5 overflow-hidden border border-white/10">
-          ${project.image ? `<img src="${project.image}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">` : ''}
+          ${project.image ? `<img src="${project.image}" alt="${project.name}" width="800" height="450" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">` : ''}
         </div>
         <h3 class="font-display text-2xl font-semibold mb-1.5">${project.name}</h3>
         <p class="text-primary-deep text-xs mb-3">${project.period}</p>
@@ -48,23 +271,75 @@ function loadProjects() {
         <div class="flex flex-wrap gap-2 mb-4">
           ${project.tags.map((tag) => `<span class="px-3 py-1 bg-ink/5 rounded-full text-xs font-medium text-ink-soft">${tag}</span>`).join('')}
         </div>
-        <div class="flex flex-wrap gap-2">
-          ${project.viewUrl ? `<a href="${project.viewUrl}" target="_blank" rel="noopener" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-deep transition text-sm font-medium">View Project →</a>` : ''}
+        <div class="flex flex-wrap items-center gap-2">
+          ${project.viewUrl ? `<a href="${project.viewUrl}" target="_blank" rel="noopener" class="px-4 py-2 bg-primary-deep text-white rounded-lg hover:bg-primary transition text-sm font-medium">${project.viewUrl.endsWith('.pdf') ? 'Read Report' : 'View Project'} →</a>` : ''}
           ${project.viewLink ? `<a href="${project.viewLink}" target="_blank" rel="noopener" class="px-4 py-2 bg-ink/5 text-ink rounded-lg hover:bg-ink/10 transition text-sm font-medium">Live Demo →</a>` : ''}
           ${project.github && project.github !== '[EDIT]' ? `<a href="${project.github}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 border border-white/15 text-ink rounded-lg hover:border-accent hover:text-accent transition text-sm font-medium"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">${GITHUB_ICON}</svg><span>Code</span></a>` : ''}
+          ${project.caseStudy ? `<button type="button" class="project-toggle" aria-haspopup="dialog" aria-label="${project.caseStudy.kind === 'web' ? 'Read the idea behind' : 'Read the deep dive on'}: ${project.name}"><span class="project-toggle-label">${project.caseStudy.kind === 'web' ? 'The idea' : 'Deep dive'}</span>${project.caseStudy.kind === 'web' ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"></path></svg>` : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>`}</button>` : ''}
         </div>
       </article>`,
     )
     .join('')
 
+  initProjectToggles(grid)
   observeReveals(grid.querySelectorAll('.reveal'))
+  renderProjectFilters()
+}
+
+/* ---------- Project filters ---------- */
+const PROJECT_FILTERS = [
+  { id: 'all', name: 'All' },
+  { id: 'research', name: 'Academic' },
+  { id: 'web', name: 'Personal builds' },
+]
+
+let activeProjectFilter = 'all'
+
+function renderProjectFilters() {
+  const bar = document.getElementById('projectFilters')
+  if (!bar) return
+
+  bar.innerHTML = PROJECT_FILTERS.map((filter) => {
+    const count =
+      filter.id === 'all'
+        ? projects.length
+        : projects.filter((p) => (p.caseStudy?.kind || 'research') === filter.id).length
+    return `<button type="button" class="project-filter" data-filter="${filter.id}" aria-pressed="${filter.id === 'all'}" aria-controls="projectsGrid">${filter.name}<span class="count" aria-hidden="true">${count}</span></button>`
+  }).join('')
+
+  bar.addEventListener('click', (event) => {
+    const button = event.target.closest('.project-filter')
+    if (!button) return
+
+    activeProjectFilter = button.dataset.filter
+    bar.querySelectorAll('.project-filter').forEach((item) => {
+      item.setAttribute('aria-pressed', String(item === button))
+    })
+    applyProjectFilter()
+  })
+
+  applyProjectFilter()
+}
+
+function applyProjectFilter() {
+  const cards = document.querySelectorAll('#projectsGrid .project-card')
+  let visible = 0
+
+  cards.forEach((card) => {
+    const show = activeProjectFilter === 'all' || card.dataset.kind === activeProjectFilter
+    card.hidden = !show
+    if (show) visible += 1
+  })
+
+  const status = document.getElementById('projectFilterStatus')
+  if (status) status.textContent = `Showing ${visible} of ${projects.length} projects`
 }
 
 /* ---------- Active work (current projects in progress) ---------- */
 const ACTIVE_STATUS_STYLES = {
   learning: 'bg-sky-500/10 text-sky-300 border-sky-500/30',
   building: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
-  exploring: 'bg-primary-soft text-primary border-primary/30',
+  exploring: 'bg-primary-soft text-[#c084fc] border-primary/30',
 }
 
 function loadActiveWork() {
@@ -81,7 +356,7 @@ function loadActiveWork() {
     .map(
       (item, i) => `
       <div class="reveal rounded-2xl p-6 bg-white/[0.03] border border-white/10 hover:border-white/20 transition flex flex-col card-accent" data-delay="${(i % 2) * 100}">
-        ${item.group ? `<span class="badge-on-border inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
+        ${item.group ? `<span class="badge-on-border inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide border bg-accent-soft text-[#f9a8d4] border-accent/30"><span aria-hidden="true">👥</span>Group</span>` : ''}
         <div class="flex items-start justify-between gap-3 mb-3">
           <h3 class="font-display text-xl font-semibold">${item.name || item.project}</h3>
           <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border whitespace-nowrap shrink-0 ${ACTIVE_STATUS_STYLES[item.status] || ACTIVE_STATUS_STYLES.exploring}">${item.status}</span>
@@ -110,21 +385,160 @@ function loadActiveWork() {
   observeReveals(section.querySelectorAll('.reveal'))
 }
 
-function loadTechGrid() {
-  const grid = document.getElementById('techGrid')
+/* ---------- Interactive skills ---------- */
+let activeSkillCategory = 'all'
+
+function skillCategoryName(id) {
+  return skillCategories.find((category) => category.id === id)?.name || id
+}
+
+function renderSkillFilters() {
+  const bar = document.getElementById('skillFilters')
+  if (!bar) return
+
+  bar.innerHTML = skillCategories
+    .map((category) => {
+      const count = category.id === 'all' ? skills.length : skills.filter((s) => s.category === category.id).length
+      return `<button type="button" class="skill-filter" data-category="${category.id}" aria-pressed="${category.id === 'all'}" aria-controls="skillGrid skillDetail" aria-label="${category.name}, ${count} skills">
+        ${category.name}<span class="count" aria-hidden="true">${count}</span>
+      </button>`
+    })
+    .join('')
+
+  bar.addEventListener('click', (event) => {
+    const button = event.target.closest('.skill-filter')
+    if (!button) return
+
+    activeSkillCategory = button.dataset.category
+    bar.querySelectorAll('.skill-filter').forEach((item) => {
+      item.setAttribute('aria-pressed', String(item === button))
+    })
+    applySkillFilter()
+  })
+}
+
+function applySkillFilter() {
+  const items = document.querySelectorAll('#skillGrid .skill-grid-item')
+  let visible = 0
+
+  items.forEach((item) => {
+    const show = activeSkillCategory === 'all' || item.dataset.category === activeSkillCategory
+    item.hidden = !show
+    if (!show) return
+
+    visible += 1
+    // Restart the entrance animation when the filter changes.
+    item.style.animation = 'none'
+    void item.offsetWidth
+    item.style.animation = ''
+  })
+
+  const empty = document.getElementById('skillEmpty')
+  if (empty) empty.hidden = visible !== 0
+}
+
+function renderSkillGrid() {
+  const grid = document.getElementById('skillGrid')
   if (!grid) return
 
-  grid.innerHTML = techStack
+  grid.innerHTML = skills
     .map(
-      (tech, i) => `
-      <li class="card card-hover tilt rounded-xl p-4 text-center" data-delay="${(i % 4) * 70}">
-        <div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-white/5 flex items-center justify-center text-ink-soft" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">${TECH_ICONS[tech.icon] || ''}</svg>
-        </div>
-        <div class="text-sm font-medium text-ink-soft">${tech.name}</div>
+      (skill, index) => `
+      <li class="skill-grid-item" data-category="${skill.category}" style="animation-delay:${(index % 6) * 35}ms">
+        <button type="button" class="skill-card" data-skill="${skill.id}" data-category="${skill.category}" aria-pressed="false">
+          <span class="skill-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">${TECH_ICONS[skill.icon] || TECH_ICONS.code}</svg>
+          </span>
+          <span class="skill-card-name">${skill.name}</span>
+          <span class="skill-card-level">${skill.label}</span>
+        </button>
       </li>`,
     )
     .join('')
+
+  grid.addEventListener('click', (event) => {
+    const button = event.target.closest('.skill-card')
+    if (!button) return
+    selectSkill(button.dataset.skill)
+  })
+}
+
+function renderSkillDetail(skill) {
+  const panel = document.getElementById('skillDetail')
+  if (!panel) return
+
+  if (!skill) {
+    panel.innerHTML = `
+      <div class="skill-detail-empty">
+        <span class="skill-detail-empty-icon" aria-hidden="true">⌘</span>
+        <p class="font-display text-xl font-semibold mb-2">Explore my toolkit</p>
+        <p class="text-sm text-ink-soft leading-relaxed">Pick a skill to see where I use it, what I pair it with, and how deep I have gone.</p>
+      </div>`
+    return
+  }
+
+  panel.innerHTML = `
+    <div class="flex items-start gap-4 mb-5">
+      <span class="skill-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">${TECH_ICONS[skill.icon] || TECH_ICONS.code}</svg>
+      </span>
+      <div>
+        <p class="skill-detail-cat">${skillCategoryName(skill.category)}</p>
+        <h3 class="font-display text-2xl font-semibold leading-tight">${skill.name}</h3>
+      </div>
+    </div>
+    <div class="flex items-center justify-between mb-2">
+      <span class="skill-detail-level">${skill.label}</span>
+    </div>
+    <div class="skill-track h-2 rounded-full overflow-hidden mb-5">
+      <div class="skill-fill h-full rounded-full" data-level="${skill.level}" role="progressbar" aria-valuenow="${skill.level}" aria-valuemin="0" aria-valuemax="100" aria-label="${skill.name} proficiency"></div>
+    </div>
+    <p class="text-sm text-ink-soft leading-relaxed mb-5">${skill.blurb}</p>
+    <div class="mt-auto">
+      <p class="skill-detail-subhead">Often paired with</p>
+      <div class="flex flex-wrap gap-2">
+        ${skill.tags.map((tag) => `<span class="skill-detail-tag">${tag}</span>`).join('')}
+      </div>
+    </div>`
+
+  panel.classList.remove('skill-detail-enter')
+  void panel.offsetWidth
+  panel.classList.add('skill-detail-enter')
+
+  requestAnimationFrame(() => {
+    const fill = panel.querySelector('.skill-fill[data-level]')
+    if (fill) fill.style.width = `${fill.dataset.level}%`
+  })
+}
+
+function selectSkill(id, shouldScroll = true) {
+  const skill = skills.find((item) => item.id === id)
+  if (!skill) return
+
+  document.querySelectorAll('#skillGrid .skill-card').forEach((card) => {
+    const isActive = card.dataset.skill === id
+    card.classList.toggle('is-active', isActive)
+    card.setAttribute('aria-pressed', String(isActive))
+  })
+  renderSkillDetail(skill)
+
+  if (shouldScroll && window.innerWidth < 1024) {
+    const panel = document.getElementById('skillDetail')
+    if (panel) {
+      const top = panel.getBoundingClientRect().top + window.scrollY - 88
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+  }
+}
+
+function loadSkills() {
+  if (!document.getElementById('skillGrid')) return
+
+  renderSkillFilters()
+  renderSkillGrid()
+  renderSkillDetail(null)
+
+  if (skills[0]) selectSkill(skills[0].id, false)
 }
 
 let statsAnimated = false
@@ -214,19 +628,63 @@ function initMobileMenu() {
   const menu = document.getElementById('mobileMenu')
   const openBtn = document.getElementById('mobileMenuBtn')
   const closeBtn = document.getElementById('closeMobileMenu')
+  if (!menu || !openBtn || !closeBtn) return
+
+  let lastFocused = null
+  const isOpen = () => !menu.classList.contains('translate-x-full')
+  const focusable = () =>
+    [...menu.querySelectorAll('a[href], button:not([disabled])')].filter((el) => el.getClientRects().length > 0)
 
   function setOpen(open) {
+    if (open === isOpen()) return
+
     menu.classList.toggle('translate-x-full', !open)
+    menu.setAttribute('aria-hidden', String(!open))
+    menu.inert = !open
     openBtn.setAttribute('aria-expanded', String(open))
     openBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
     document.body.style.overflow = open ? 'hidden' : ''
+
+    if (open) {
+      lastFocused = openBtn
+      closeBtn.focus()
+    } else {
+      document.body.style.overflow = ''
+      if (lastFocused instanceof HTMLElement) lastFocused.focus()
+      lastFocused = null
+    }
   }
 
-  openBtn.addEventListener('click', () => setOpen(true))
+  // Start closed and out of the tab order.
+  menu.setAttribute('aria-hidden', 'true')
+  menu.inert = true
+
+  openBtn.addEventListener('click', () => setOpen(!isOpen()))
   closeBtn.addEventListener('click', () => setOpen(false))
   menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)))
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') setOpen(false)
+    if (e.key === 'Escape' && isOpen()) {
+      e.preventDefault()
+      setOpen(false)
+      return
+    }
+
+    if (e.key !== 'Tab' || !isOpen()) return
+
+    const items = focusable()
+    if (!items.length) return
+
+    const first = items[0]
+    const last = items[items.length - 1]
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault()
+      last.focus()
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
   })
 }
 
@@ -415,7 +873,7 @@ const TERMINAL_LINES = [
   ],
   [
     { t: '→ ', c: 'tok-prom' },
-    { t: '8 projects · 12 technologies · building what I learn', c: 'tok-dim' },
+    { t: '8 projects · 23 skills · building what I learn', c: 'tok-dim' },
   ],
 ]
 
@@ -570,6 +1028,7 @@ function initTilt() {
     let raf = null
 
     card.addEventListener('pointermove', (e) => {
+      if (document.body.classList.contains('viewer-open')) return
       if (raf) return
       raf = requestAnimationFrame(() => {
         const rect = card.getBoundingClientRect()
@@ -620,7 +1079,7 @@ function renderSocial() {
 const STATUS_STYLES = {
   learning: 'bg-sky-500/10 text-sky-300 border-sky-500/30',
   building: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
-  exploring: 'bg-primary-soft text-primary border-primary/30',
+  exploring: 'bg-primary-soft text-[#c084fc] border-primary/30',
 }
 
 function loadNowBuilding() {
@@ -721,6 +1180,50 @@ function initBackToTop() {
   toggle()
 }
 
+/* ---------- Contact form ---------- */
+function initContactForm() {
+  const form = document.getElementById('contactForm')
+  const status = document.getElementById('formStatus')
+  if (!form || !status) return
+
+  const button = form.querySelector('button[type="submit"]')
+  if (!button) return
+  const originalLabel = button.textContent
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    status.textContent = ''
+    status.className = 'form-status'
+    button.disabled = true
+    button.textContent = 'Sending…'
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null)
+        const message = data?.errors?.map((item) => item.message).join(', ')
+        throw new Error(message || 'Something went wrong. Please email me directly.')
+      }
+
+      form.reset()
+      status.textContent = 'Thanks — your message has been sent. I will get back to you soon.'
+      status.classList.add('form-status-success')
+    } catch (error) {
+      status.textContent = error.message || 'Something went wrong. Please email me directly.'
+      status.classList.add('form-status-error')
+    } finally {
+      button.disabled = false
+      button.textContent = originalLabel
+    }
+  })
+}
+
 /* ---------- Reveal observer ---------- */
 function initRevealObserver() {
   observeReveals(document.querySelectorAll('.reveal'))
@@ -751,7 +1254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('year').textContent = new Date().getFullYear()
   loadProjects()
   loadActiveWork()
-  loadTechGrid()
+  loadSkills()
   loadCourses()
   loadCertifications()
   loadHobbies()
@@ -769,6 +1272,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMarquee()
   initTilt()
   initBackToTop()
+  initContactForm()
 
   const heroObserver = new IntersectionObserver(
     (entries) => {

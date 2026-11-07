@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- SEO Meta Tags -->
     <title>Ananyo Sen - Data Science & AI Student | Python, ML, Full-Stack Developer</title>
     <meta name="description" content="Ananyo Sen is a Data Science & AI graduate student at RKMVERI with a Mathematics background. Explore his academic research, machine learning projects, and technical skills.">
@@ -12,12 +16,10 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#08080f">
 
-    <!-- Cloudflare Web Analytics
-         Note: replace YOUR_CF_ANALYTICS_TOKEN below with your real beacon token from
-         https://dash.cloudflare.com/ → Analytics & Logs → Web Analytics → Add a site.
-         The beacon works on Netlify via Beacon Mode without moving DNS. -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-        data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "ebcb385ebf874a8f874f2e3f3132bf80"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
@@ -46,29 +48,50 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Ananyo Sen",
-      "url": "https://ananyosenportfolio.netlify.app/",
-      "image": "https://ananyosenportfolio.netlify.app/profile.png",
-      "jobTitle": "Data Science & AI Student",
-      "description": "Graduate student in Data Science & Artificial Intelligence with a Mathematics background, focused on machine learning research and applied projects",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kolkata",
-        "addressRegion": "West Bengal",
-        "addressCountry": "India"
-      },
-      "email": "arka8868@gmail.com",
-      "telephone": "+917029281649",
-      "sameAs": [
-        "https://www.linkedin.com/in/ananyo-sen-7884b1362",
-        "https://github.com/Ananyo-Sen-B2530066"
-      ],
-      "knowsAbout": ["Python", "React", "Machine Learning", "Web Development", "Data Science", "TensorFlow", "PyTorch"],
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "RKMVERI"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://ananyosenportfolio.netlify.app/#person",
+          "name": "Ananyo Sen",
+          "url": "https://ananyosenportfolio.netlify.app/",
+          "image": "https://ananyosenportfolio.netlify.app/profile.png",
+          "jobTitle": "Data Science & AI Graduate Student",
+          "description": "Graduate student in Data Science & Artificial Intelligence with a Mathematics background, focused on machine learning research and applied projects.",
+          "email": "arka8868@gmail.com",
+          "telephone": "+917029281649",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolkata",
+            "addressRegion": "West Bengal",
+            "addressCountry": "India"
+          },
+          "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "RKMVERI"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/ananyo-sen-7884b1362",
+            "https://github.com/Ananyo-Sen-B2530066"
+          ],
+          "knowsAbout": [
+            "Python",
+            "PyTorch",
+            "Machine Learning",
+            "Computer Vision",
+            "LLMs",
+            "Retrieval-Augmented Generation",
+            "Data Science",
+            "Applied Mathematics"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ananyosenportfolio.netlify.app/#website",
+          "url": "https://ananyosenportfolio.netlify.app/",
+          "name": "Ananyo Sen — Portfolio",
+          "publisher": { "@id": "https://ananyosenportfolio.netlify.app/#person" }
+        }
+      ]
     }
     </script>
 </head>
@@ -79,7 +102,7 @@
     <!-- Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
-            <a href="#home" class="font-display text-2xl font-bold text-primary" aria-label="Ananyo Sen — home">
+            <a href="#home" class="font-display text-2xl font-bold text-primary" aria-label="AS. — Ananyo Sen, home">
                 AS<span class="text-accent">.</span>
             </a>
 
@@ -94,8 +117,8 @@
                     <li><a href="#contact" class="nav-link text-sm font-medium text-ink-soft hover:text-ink transition">Contact</a></li>
                 </ul>
                 <div data-social="github,linkedin" data-social-compact class="flex items-center gap-1.5"></div>
-                <a href="cv.pdf" download class="btn-shine px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary-deep shadow-soft transition">
-                    Download CV
+                <a href="cv.pdf" target="_blank" rel="noopener" class="btn-shine px-5 py-2.5 bg-primary-deep text-white text-sm font-semibold rounded-full hover:bg-primary shadow-soft transition">
+                    View CV
                 </a>
             </div>
 
@@ -123,8 +146,8 @@
             <a href="#skills" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Skills</a>
             <a href="#contact" class="text-ink-soft hover:text-primary font-medium py-2 px-3 rounded-lg hover:bg-primary-soft transition">Contact</a>
         </div>
-        <a href="cv.pdf" download class="mt-6 block text-center px-5 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-deep shadow-soft transition">
-            Download CV
+        <a href="cv.pdf" target="_blank" rel="noopener" class="mt-6 block text-center px-5 py-3 bg-primary-deep text-white font-semibold rounded-full hover:bg-primary shadow-soft transition">
+            View CV
         </a>
     </div>
 
@@ -161,7 +184,7 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                        <a href="#contact" class="btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary-deep hover:shadow-[0_0_28px_rgba(168,85,247,0.45)] shadow-soft transition">
+                        <a href="#contact" class="btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-deep text-white font-semibold rounded-full hover:bg-primary hover:shadow-[0_0_28px_rgba(168,85,247,0.45)] shadow-soft transition">
                             Get In Touch
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
                         </a>
@@ -178,8 +201,8 @@
                             <dt class="text-sm text-ink-soft mt-1.5">Projects Built</dt>
                         </div>
                         <div class="card p-5">
-                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="12">0</dd>
-                            <dt class="text-sm text-ink-soft mt-1.5">Technologies</dt>
+                            <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="23">0</dd>
+                            <dt class="text-sm text-ink-soft mt-1.5">Skills</dt>
                         </div>
                         <div class="card p-5">
                             <dd class="font-display text-4xl font-semibold text-ink stat-number" data-target="2">0</dd>
@@ -194,10 +217,14 @@
                         <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/30 via-glow/20 to-accent/30 rotate-3 blur-sm" aria-hidden="true"></div>
                         <div id="portraitReveal" class="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-gradient-to-br from-violet-600 via-fuchsia-500 to-accent shadow-glow">
                             <span class="absolute inset-0 flex items-center justify-center font-display text-7xl font-semibold text-white/25" aria-hidden="true">AS</span>
-                            <img src="profile.png" alt="Ananyo Sen - Data Science &amp; AI Student from Kolkata"
-                                 class="absolute inset-0 w-full h-full object-cover"
-                                 decoding="async"
-                                 onerror="this.style.display='none'">
+                            <picture>
+                                <source srcset="profile.webp" type="image/webp">
+                                <img src="profile.png" alt="Ananyo Sen - Data Science &amp; AI Student from Kolkata"
+                                     width="768" height="1152"
+                                     class="absolute inset-0 w-full h-full object-cover"
+                                     decoding="async"
+                                     onerror="this.style.display='none'">
+                            </picture>
                             <span id="portraitScanline" class="portrait-scanline" aria-hidden="true"></span>
                         </div>
                         <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface border border-white/10 rounded-full px-5 py-2.5 shadow-lift flex items-center gap-2">
@@ -240,11 +267,11 @@
                         </div>
 
                         <div class="flex flex-wrap gap-2.5 mt-8">
-                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Data Science</span>
-                            <span class="px-4 py-2 bg-accent-soft text-accent rounded-full text-sm font-medium">Machine Learning</span>
-                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Applied Mathematics</span>
-                            <span class="px-4 py-2 bg-accent-soft text-accent rounded-full text-sm font-medium">Statistical Models</span>
-                            <span class="px-4 py-2 bg-primary-soft text-primary rounded-full text-sm font-medium">Research</span>
+                            <span class="px-4 py-2 bg-primary-soft text-[#c084fc] rounded-full text-sm font-medium">Data Science</span>
+                            <span class="px-4 py-2 bg-accent-soft text-[#f9a8d4] rounded-full text-sm font-medium">Machine Learning</span>
+                            <span class="px-4 py-2 bg-primary-soft text-[#c084fc] rounded-full text-sm font-medium">Applied Mathematics</span>
+                            <span class="px-4 py-2 bg-accent-soft text-[#f9a8d4] rounded-full text-sm font-medium">Statistical Models</span>
+                            <span class="px-4 py-2 bg-primary-soft text-[#c084fc] rounded-full text-sm font-medium">Research</span>
                         </div>
                     </div>
 
@@ -371,10 +398,10 @@
                                                     </ul>
                                                 </div>
                                                 <div class="flex md:justify-end gap-2 mt-4 flex-wrap">
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Data Science</span>
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Artificial Intelligence</span>
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Deep Learning</span>
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">ML Research</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">Data Science</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">Artificial Intelligence</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">Deep Learning</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">ML Research</span>
                                                     <span class="px-3 py-1 bg-white/5 text-ink-soft rounded-full text-xs font-medium">CGPA: 6.65 (Sem 2)</span>
                                                 </div>
                                             </div>
@@ -416,9 +443,9 @@
                                                     </ul>
                                                 </div>
                                                 <div class="flex gap-2 mt-4 flex-wrap">
-                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Pure Mathematics</span>
-                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Applied Math</span>
-                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Research</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-[#f9a8d4] rounded-full text-xs font-medium">Pure Mathematics</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-[#f9a8d4] rounded-full text-xs font-medium">Applied Math</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-[#f9a8d4] rounded-full text-xs font-medium">Research</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -440,8 +467,8 @@
                                                 <p class="font-mono text-sm text-ink-faint mb-3">2020 - 2022 &nbsp;•&nbsp; Science Stream</p>
                                                 <p class="text-sm text-ink-soft leading-relaxed">Focused on Mathematics, Physics, Chemistry, and Statistics. Built strong foundation in analytical thinking and problem-solving.</p>
                                                 <div class="flex md:justify-end gap-2 mt-4 flex-wrap">
-                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Science</span>
-                                                    <span class="px-3 py-1 bg-accent-soft text-accent rounded-full text-xs font-medium">Mathematics</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-[#f9a8d4] rounded-full text-xs font-medium">Science</span>
+                                                    <span class="px-3 py-1 bg-accent-soft text-[#f9a8d4] rounded-full text-xs font-medium">Mathematics</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -465,8 +492,8 @@
                                                 <p class="font-mono text-sm text-ink-faint mb-3">2020</p>
                                                 <p class="text-sm text-ink-soft leading-relaxed">Completed secondary education with strong performance in mathematics and sciences. Foundation year for analytical and logical thinking development.</p>
                                                 <div class="flex gap-2 mt-4 flex-wrap">
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">Secondary Education</span>
-                                                    <span class="px-3 py-1 bg-primary-soft text-primary rounded-full text-xs font-medium">WBBSE</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">Secondary Education</span>
+                                                    <span class="px-3 py-1 bg-primary-soft text-[#c084fc] rounded-full text-xs font-medium">WBBSE</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -583,13 +610,13 @@
                             Structured study of statistical hypothesis testing, ANOVA, power analysis, sample size estimation, and non-parametric methods, paired with a literature review of machine learning applications in mental health, including a comparative study of various psychometric scales and their validation studies.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <a href="research-progress-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-deep transition text-sm font-medium">Research Progress Report →</a>
+                            <a href="research-progress-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary-deep text-white rounded-lg hover:bg-primary transition text-sm font-medium">Research Progress Report →</a>
                         </div>
                     </div>
                     <div class="reveal card card-hover tilt p-8" data-delay="120">
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-2xl shrink-0" aria-hidden="true">📖</div>
-                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-accent border-accent/30">Internship</span>
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border bg-accent-soft text-[#f9a8d4] border-accent/30">Internship</span>
                         </div>
                         <h3 class="font-display text-2xl font-semibold mb-1">Computational Analysis of Comic Narrative Flow</h3>
                         <p class="font-mono text-sm text-violet-300 mb-3">Flame University · May 2026 – Sep 2026</p>
@@ -597,7 +624,7 @@
                             Summer internship on computational comic understanding — studying ML approaches for modeling narrative flow, including emotion recognition, panel transition understanding, multimodal reasoning, and context inference, to identify open research directions. Completed and officially recognized via a completion letterhead.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <a href="flame-internship-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-deep transition text-sm font-medium">Internship Report →</a>
+                            <a href="flame-internship-report.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-primary-deep text-white rounded-lg hover:bg-primary transition text-sm font-medium">Internship Report →</a>
                             <a href="flame-completion-letter.pdf" target="_blank" rel="noopener" class="px-4 py-2 bg-ink/5 text-ink rounded-lg hover:bg-ink/10 transition text-sm font-medium">Completion Letter →</a>
                         </div>
                     </div>
@@ -614,6 +641,9 @@
                     <p class="text-xl text-ink-soft">Academic research and self-directed builds, from math to machine learning</p>
                 </div>
 
+                <div id="projectFilters" class="reveal flex flex-wrap justify-center gap-2 mb-10" role="group" aria-label="Filter projects"></div>
+                <p id="projectFilterStatus" class="sr-only" aria-live="polite"></p>
+
                 <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
@@ -621,54 +651,21 @@
         <!-- Skills -->
         <section id="skills" class="py-20 lg:py-28">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
+                <div class="text-center mb-12 reveal">
                     <p class="font-mono text-sm tracking-widest text-accent uppercase mb-4">[ 06 ] · expertise</p>
                     <h2 class="font-display text-4xl lg:text-5xl font-semibold tracking-tight mb-4">Skills &amp; Technologies</h2>
+                    <p class="text-xl text-ink-soft">Filter by area, then tap a skill to see how I use it</p>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-12">
-                    <div class="reveal space-y-7">
-                        <div>
-                            <div class="flex justify-between mb-2.5">
-                                <span class="font-semibold text-ink">Python &amp; Machine Learning</span>
-                                <span class="font-mono text-primary">90%</span>
-                            </div>
-                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
-                                <div class="skill-fill h-full rounded-full" data-level="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Python and Machine Learning"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2.5">
-                                <span class="font-semibold text-ink">Mathematics &amp; Statistics</span>
-                                <span class="font-mono text-primary">95%</span>
-                            </div>
-                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
-                                <div class="skill-fill h-full rounded-full" data-level="95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Mathematics and Statistics"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2.5">
-                                <span class="font-semibold text-ink">Deep Learning (PyTorch)</span>
-                                <span class="font-mono text-primary">82%</span>
-                            </div>
-                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
-                                <div class="skill-fill h-full rounded-full" data-level="82" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Deep Learning"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2.5">
-                                <span class="font-semibold text-ink">Web Development (React/JS)</span>
-                                <span class="font-mono text-primary">80%</span>
-                            </div>
-                            <div class="skill-track h-2.5 rounded-full overflow-hidden">
-                                <div class="skill-fill h-full rounded-full" data-level="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Web Development"></div>
-                            </div>
-                        </div>
+                <div id="skillFilters" class="reveal flex flex-wrap gap-2 mb-6" role="group" aria-label="Filter skills by category"></div>
+
+                <div class="reveal grid lg:grid-cols-[minmax(0,1fr)_340px] gap-8 items-start">
+                    <div class="order-2 lg:order-1">
+                        <ul id="skillGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3.5" aria-live="polite"></ul>
+                        <p id="skillEmpty" class="hidden text-center text-ink-faint py-12 font-mono text-sm" hidden>No skills match that filter.</p>
                     </div>
 
-                    <div class="reveal">
-                        <ul class="grid grid-cols-3 sm:grid-cols-4 gap-3" id="techGrid"></ul>
-                    </div>
+                    <aside id="skillDetail" class="skill-detail card p-6 order-1 lg:order-2 lg:sticky lg:top-24" aria-live="polite"></aside>
                 </div>
 
                 <div class="reveal marquee mt-16" aria-label="Technologies">
@@ -739,7 +736,11 @@
                 </div>
 
                 <div class="card p-8 reveal shadow-lift">
-                    <form action="https://formspree.io/f/mldprpbb" method="POST" class="space-y-5">
+                    <form id="contactForm" action="https://formspree.io/f/mldprpbb" method="POST" class="space-y-5">
+                        <div class="hidden" aria-hidden="true">
+                            <label for="company">Company</label>
+                            <input id="company" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="grid md:grid-cols-2 gap-5">
                             <div>
                                 <label for="name" class="block text-sm font-medium mb-2">Name</label>
@@ -757,9 +758,10 @@
                             <textarea id="message" name="message" required rows="5"
                                 class="w-full px-4 py-3 bg-base/60 border border-white/10 rounded-xl focus:border-primary text-ink transition resize-none placeholder:text-ink-faint"></textarea>
                         </div>
-                        <button type="submit" class="btn-shine w-full py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-deep hover:shadow-[0_0_24px_rgba(168,85,247,0.4)] shadow-soft transition">
+                        <button type="submit" class="btn-shine w-full py-4 bg-primary-deep text-white font-semibold rounded-xl hover:bg-primary hover:shadow-[0_0_24px_rgba(168,85,247,0.4)] shadow-soft transition">
                             Send Message
                         </button>
+                        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
                     </form>
 
                     <div class="grid md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
@@ -784,6 +786,7 @@
         <div class="max-w-7xl mx-auto px-6 text-center space-y-2">
             <p class="font-display text-lg font-semibold text-primary">Ananyo Sen<span class="text-accent">.</span></p>
             <p class="font-mono text-sm text-ink-faint">&copy; <span id="year"></span> Ananyo Sen. All rights reserved.</p>
+            <p class="font-mono text-xs text-ink-faint">Last updated <time datetime="2026-11-07">November 2026</time></p>
         </div>
     </footer>
 
