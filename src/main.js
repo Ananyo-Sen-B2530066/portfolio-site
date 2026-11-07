@@ -873,7 +873,7 @@ const TERMINAL_LINES = [
   ],
   [
     { t: '→ ', c: 'tok-prom' },
-    { t: '8 projects · 23 skills · building what I learn', c: 'tok-dim' },
+    { t: '8 projects · 24 skills · building what I learn', c: 'tok-dim' },
   ],
 ]
 

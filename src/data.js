@@ -319,15 +319,26 @@ export const skillCategories = [
 
 export const skills = [
   {
-    id: 'python-ml',
-    name: 'Python & Machine Learning',
-    icon: 'code',
+    id: 'pandas',
+    name: 'Pandas',
+    icon: 'database',
     category: 'ml',
     level: 90,
     label: 'Advanced',
     blurb:
-      'Python is where most of my work happens — data cleaning, feature engineering, model training, and evaluation. I have used it across coursework, research, and every project on this site.',
-    tags: ['Pandas', 'NumPy', 'Scikit-Learn', 'Jupyter'],
+      'My everyday tool for loading, cleaning, and reshaping tabular data — handling missing values, merging datasets, and building the feature tables that model training actually runs on.',
+    tags: ['Data Cleaning', 'GroupBy', 'Merging', 'Time Series'],
+  },
+  {
+    id: 'numpy',
+    name: 'NumPy',
+    icon: 'activity',
+    category: 'ml',
+    level: 85,
+    label: 'Proficient',
+    blurb:
+      'Arrays, broadcasting, and vectorised operations are how I turn data-cleaning steps into fast numerical pipelines instead of slow Python loops.',
+    tags: ['Arrays', 'Broadcasting', 'Vectorization'],
   },
   {
     id: 'pytorch',
@@ -425,8 +436,8 @@ export const skills = [
     level: 92,
     label: 'Advanced',
     blurb:
-      'My primary language for scripts, notebooks, automation, and backend logic. I write readable, modular Python and lean heavily on the scientific stack.',
-    tags: ['Scripting', 'Automation', 'OOP'],
+      'My primary language for scripts, notebooks, automation, and backend logic. Python is where most of my ML work happens — data cleaning, feature engineering, model training, and evaluation. I write readable, modular Python and lean heavily on the scientific stack.',
+    tags: ['Scripting', 'Automation', 'OOP', 'Jupyter'],
   },
   {
     id: 'cpp',
@@ -574,7 +585,7 @@ export const skills = [
 ]
 
 export const MARQUEE_TECH = [
-  'Python', 'PyTorch', 'React', 'Scikit-Learn', 'TensorFlow', 'Ray',
+  'Python', 'Pandas', 'NumPy', 'PyTorch', 'React', 'Scikit-Learn', 'TensorFlow', 'Ray',
   'Flask', 'R', 'C++', 'Git', 'Linux', 'Windows', 'macOS', 'Gymnasium', 'Streamlit', 'JavaScript', 'TypeScript',
   'Computer Vision', 'LLMs', 'RAG',
 ]
